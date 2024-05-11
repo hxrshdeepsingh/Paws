@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'jersey';
+    src: url('/fonts/jersey.ttf') format('truetype');
+}
+
+.font-jersey {
+    font-family: 'jersey' !important;
+}

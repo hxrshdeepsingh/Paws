@@ -5,6 +5,8 @@ const dotenv = require("dotenv")
 const { v4: uuidv4 } = require('uuid');
 dotenv.config()
 
+
+// @protected
 const signup = async (req, res) => {
     const { username, password, email } = req.body;
     try {
@@ -18,17 +20,21 @@ const signup = async (req, res) => {
                 username: username,
                 email: email,
                 password: hashedPassword,
-                userId: uuid
+                public_id: uuid
             });
 
-            const token = jwt.sign({ id: creation._id }, process.env.SECRET_KEY);
-            return res.status(201).json({ user: creation, token: token });
+            const tokenPayload = { private_id: creation._id, public_id: creation.public_id };
+            const token = jwt.sign(tokenPayload, process.env.SECRET_KEY);
+
+            return res.status(201).json({ token: token });
         }
     } catch (error) {
         return res.status(500).json({ "message": "Internal server error" });
     }
 };
 
+
+// @protected
 const signin = async (req, res) => {
     const { email, password } = req.body;
 
@@ -43,8 +49,8 @@ const signin = async (req, res) => {
             return res.status(400).json({ "message": "User credentials are invalid" });
         }
 
-        const token = jwt.sign({ id: existingUser._id }, process.env.SECRET_KEY);
-        return res.status(200).json({ user: existingUser, token: token });
+        const token = jwt.sign({ private_id: existingUser._id, public_id: existingUser.public_id }, process.env.SECRET_KEY);
+        return res.status(200).json({ token: token });
 
     } catch (error) {
         console.error(error);
@@ -52,18 +58,21 @@ const signin = async (req, res) => {
     }
 };
 
+
+// @Public
 const profile = async (req, res) => {
-    const { userId } = req.body;
+    const { public_id } = req.body;
 
     try {
-        const user = await User.find({ userId: userId }).select('-_id -password');
+        const user = await User.find({ public_id: public_id }).select('-_id -password');
         if (user) {
             res.status(200).json(user);
         }
         res.status(404).json({ "message": "user not found" })
     } catch (error) {
-        res.status(500)
+        res.status(404)
     }
 }
+
 
 module.exports = { signup, signin , profile};
