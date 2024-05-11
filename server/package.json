@@ -20,6 +20,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "globals": "^15.2.0",
     "prettier": "3.2.5"
   }
 }
