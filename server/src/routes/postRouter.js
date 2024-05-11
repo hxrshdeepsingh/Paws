@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const {
-  getPost,
-  getPosts,
-  deletePost,
-  updatePost,
-  createPost,
+	getPost,
+	getPosts,
+	deletePost,
+	updatePost,
+	createPost,
 } = require('../controllers/postControllers')
 const { verifyToken } = require('../middlewares/userAuth')
 
