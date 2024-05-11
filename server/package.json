@@ -4,7 +4,8 @@
   "description": "server for paws.",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "format": "prettier --write \"**/*.js\""
   },
   "author": "Harshdeep Singh",
   "license": "ISC",
@@ -17,5 +18,8 @@
     "mongoose": "^8.3.2",
     "nodemon": "^3.1.0",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5"
   }
 }
