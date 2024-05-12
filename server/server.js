@@ -8,9 +8,7 @@ const postRoute = require('./src/routes/postRouter')
 
 const mongoose = require('mongoose')
 mongoose
-	.connect(
-		'mongodb+srv://admin:admin@movies.ygif1ap.mongodb.net/?retryWrites=true&w=majority&appName=movies',
-	)
+	.connect(process.env.DB_URL)
 	.then(() => {
 		console.log('DB connected')
 	})
