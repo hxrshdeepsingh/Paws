@@ -3,10 +3,17 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'jersey';
-    src: url('/fonts/jersey.ttf') format('truetype');
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Regular.ttf') format('truetype');
 }
 
-.font-jersey {
-    font-family: 'jersey' !important;
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Lato';
+    font-size: 1.375rem;
+    line-height: 2rem;
+    font-weight: 400;
 }
