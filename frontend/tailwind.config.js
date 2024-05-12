@@ -1,6 +1,5 @@
-import { nextui } from '@nextui-org/react'
+const { nextui } = require('@nextui-org/react')
 
-/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,38 +11,37 @@ module.exports = {
 	plugins: [
 		nextui({
 			themes: {
-				'purple-light': {
-					extend: 'light',
-					colors: {
-						background: '#ffffff',
-						foreground: '#000',
-						primary: {
-							50: '#010a06',
-							100: '#520F83',
-							200: '#01130d',
-							300: '#021d13',
-							400: '#02261a',
-							500: '#033020',
-							600: '#09865a',
-							700: '#0edd94',
-							800: '#52f4bb',
-							900: '#a9f9dd',
-							DEFAULT: '#033020',
-							foreground: '#ffffff',
+				'sea-light': {
+					extend: 'dark',
+					components: {
+						Button: {
+							styles: {
+								base: {
+									background: '#FFFFF7',
+								},
+							},
 						},
-						focus: '#07FFA8',
+					},
+					colors: {
+						background: '#FFFFF7',
+						foreground: '#1b1d04',
+						primary: {
+							DEFAULT: '#DCE32E',
+						},
+						secondary: {
+							DEFAULT: '#C5EF85',
+						},
+						accent: {
+							DEFAULT: '#8BE959',
+						},
+						focus: '#DCE32E',
 					},
 					layout: {
 						disabledOpacity: '0.3',
 						radius: {
-							small: '4px',
-							medium: '6px',
-							large: '8px',
-						},
-						borderWidth: {
-							small: '1px',
-							medium: '2px',
-							large: '3px',
+							small: '8px',
+							medium: '8px',
+							large: '16px',
 						},
 					},
 				},

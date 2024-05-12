@@ -1,3 +1,3 @@
-export default function requestMaker(url, data){
-    return reponse;
+export default function requestMaker(url, data) {
+	return reponse
 }
