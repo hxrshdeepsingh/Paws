@@ -1,12 +1,9 @@
 const Post = require('../models/postModel')
 const User = require('../models/userModel')
-
 const { v4: uuidv4 } = require('uuid')
 
 // @public
 const getPosts = async (req, res) => {
-	const { tokenPayload } = req
-	console.log(tokenPayload.public_id)
 	try {
 		const post = await Post.find().select('-_id -uid')
 		return res.status(200).json(post)
@@ -34,18 +31,36 @@ const getPost = async (req, res) => {
 	}
 }
 
+// @public
+const getUserPosts = async (req, res) => {
+	const { user_id } = req.body
+	try {
+		const post = await Post.find({ userId: user_id }).select('-_id -uid')
+		if (!post) {
+			return res.status(404).json({ message: 'Posts not found' })
+		} else {
+			return res.status(200).json(post)
+		}
+	} catch (error) {
+		return res
+			.status(500)
+			.json({ message: 'An error occurred', error: error.message })
+	}
+}
+
 // @protected
 const createPost = async (req, res) => {
-	const { name, description, id } = req.body
+	const { name, description } = req.body
+	const { token } = req
 	const uuid = uuidv4()
 	try {
-		const match = await User.findOne({ _id: id })
+		const match = await User.findOne({ _id: token.private_id })
 
 		if (match) {
 			const post = new Post({
 				name: name,
 				description: description,
-				userId: userId,
+				userId: token.public_id,
 				postId: uuid,
 			})
 			await post.save()
@@ -62,10 +77,11 @@ const createPost = async (req, res) => {
 
 // @protected
 const updatePost = async (req, res) => {
-	const { userId, postId, uid, updatedData } = req.body
+	const { postId, updatedData } = req.body
+	const { token } = req
 	try {
 		const updatedPost = await Post.findOneAndUpdate(
-			{ postId: postId, userId: userId, uid: uid },
+			{ postId: postId, userId: token.public_id },
 			{ $set: updatedData },
 			{ new: true },
 		)
@@ -76,15 +92,16 @@ const updatePost = async (req, res) => {
 		}
 		return res.status(200).json({ message: 'post updated' })
 	} catch {
-		return res.status(500).json({ message: 'error occurred' })
+		return res.status(500).json({ message: 'error occurred here' })
 	}
 }
 
 // @protected
 const deletePost = async (req, res) => {
-	const { userId, postId } = req.body
+	const { postId } = req.body
+	const { token } = req
 	try {
-		const post = await Post.findOne({ userId: userId, postId: postId })
+		const post = await Post.findOne({ userId: token.public_id, postId: postId })
 		if (post) {
 			await post.deleteOne()
 			return res.status(200).json({ message: 'Post deleted' })
@@ -96,4 +113,11 @@ const deletePost = async (req, res) => {
 	}
 }
 
-module.exports = { getPost, getPosts, createPost, updatePost, deletePost }
+module.exports = {
+	getPost,
+	getPosts,
+	createPost,
+	updatePost,
+	deletePost,
+	getUserPosts,
+}

@@ -5,13 +5,16 @@ const {
 	deletePost,
 	updatePost,
 	createPost,
+	getUserPosts,
 } = require('../controllers/postControllers')
 const { verifyToken } = require('../middlewares/userAuth')
 
-router.get('/all', verifyToken, getPosts)
+router.get('/all', getPosts)
 router.get('/post', getPost)
-router.put('/update', updatePost)
-router.post('/create', createPost)
-router.delete('/delete', deletePost)
+router.get('/getUserPosts', getUserPosts)
+
+router.put('/update', verifyToken, updatePost)
+router.post('/create', verifyToken, createPost)
+router.delete('/delete', verifyToken, deletePost)
 
 module.exports = router

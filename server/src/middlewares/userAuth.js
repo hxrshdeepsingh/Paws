@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
 		if (err) {
 			return res.status(403).json({ message: 'Forbidden' })
 		}
-		req.tokenPayload = decoded
+		req.token = decoded
 		next()
 	})
 }
