@@ -11,7 +11,7 @@ export default function Layout({ title, children }) {
 
 			<Header />
 
-			<div className="Content">{children}</div>
+			<div className="Content min-h-screen max-h-full">{children}</div>
 
 			<Footer />
 		</>

@@ -30,7 +30,11 @@ const signup = async (req, res) => {
 			}
 			const token = jwt.sign(tokenPayload, process.env.SECRET_KEY)
 
-			return res.status(201).json({ token: token })
+			res.cookie('token1', token, {
+				httpOnly: true,
+			  })
+
+			return res.status(201).json({ status: "okay!" })
 		}
 	} catch (error) {
 		return res.status(500).json({ message: 'Internal server error' })
@@ -56,7 +60,17 @@ const signin = async (req, res) => {
 			{ private_id: existingUser._id, public_id: existingUser.public_id },
 			process.env.SECRET_KEY,
 		)
-		return res.status(200).json({ token: token })
+
+
+		res.cookie('token1', token, {
+			httpOnly: true,
+		  })
+
+
+		return res.status(201).json({ status: "okay!" })
+
+
+
 	} catch (error) {
 		console.error(error)
 		return res.status(500).json({ message: 'Internal server error' })

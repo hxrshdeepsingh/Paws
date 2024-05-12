@@ -2,17 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato-Regular.ttf') format('truetype');
-}
-
 *{
     margin: 0;
     padding: 0;
 }
 body{
-    font-family: 'Lato';
     font-size: 1.375rem;
     line-height: 2rem;
     font-weight: 400;
