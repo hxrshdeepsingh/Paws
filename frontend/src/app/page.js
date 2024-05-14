@@ -7,8 +7,7 @@ export default function Home() {
 				<div className="flex">
 					<div>
 						<h2 className="text-3xl sm:text:4xl md:text-5xl font-semibold mb-10">
-							{' '}
-							Lorem ipsum{' '}
+							<span>Lorem ipsum</span>
 							<span className="bg-clip-text text-transparent linearPrimaryAccent">
 								Adoptions
 							</span>
@@ -24,7 +23,7 @@ export default function Home() {
 					</div>
 				</div>
 
-				<div className="bg-gray-950 w-full text-center text-white rounded-xl p-2 sm:p-2 md:p-6">
+				<div className="bg-gray-950 w-full text-center text-white rounded-3xl p-16 md:p-16 lg:p-20">
 					<h3 className="font-semibold">How can we help?</h3>
 					<h2 className="font-semibold text-xl sm:text-2xl md:text-4xl">
 						while on vacation, <br /> it's very easy and joyfull & greatfull

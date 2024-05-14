@@ -16,7 +16,7 @@ export default function header() {
     return (
         <>
             <header>
-                <div className="container px-10 flex justify-between py-4 align-middle">
+                <div className="container px-5 flex justify-between py-4 align-middle">
 
                     <div className="w-1/5 flex align-middle justify-start my-auto">
                         <h1 className="text-xl sm:text-xl md:text-2xl font-semibold">
