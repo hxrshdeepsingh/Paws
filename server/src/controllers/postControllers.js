@@ -16,7 +16,7 @@ const getPosts = async (req, res) => {
 
 // @public
 const getPost = async (req, res) => {
-	const { postId } = req.body
+	const { postId } = req.params
 	try {
 		const post = await Post.findOne({ postId: postId }).select('-_id -uid')
 
