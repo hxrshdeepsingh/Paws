@@ -1,3 +1,5 @@
+'use client'
+
 import axios from 'axios'
 
 async function postRequest(url, data) {
