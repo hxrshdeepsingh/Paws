@@ -32,9 +32,9 @@ const signup = async (req, res) => {
 
 			res.cookie('token1', token, {
 				httpOnly: true,
-			  })
+			})
 
-			return res.status(201).json({ status: "okay!" })
+			return res.status(201).json({ status: 'okay!' })
 		}
 	} catch (error) {
 		return res.status(500).json({ message: 'Internal server error' })
@@ -61,16 +61,11 @@ const signin = async (req, res) => {
 			process.env.SECRET_KEY,
 		)
 
-
 		res.cookie('token1', token, {
 			httpOnly: true,
-		  })
+		})
 
-
-		return res.status(201).json({ status: "okay!" })
-
-
-
+		return res.status(201).json({ status: 'okay!' })
 	} catch (error) {
 		console.error(error)
 		return res.status(500).json({ message: 'Internal server error' })
