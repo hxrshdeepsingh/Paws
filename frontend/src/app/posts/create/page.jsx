@@ -13,20 +13,14 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-import {postRequest, getRequest} from "../../../lib/api"
+import {postRequest} from "../../../lib/api"
 
 export default function CreatePost() {
     const { register, handleSubmit, setValue } = useForm();
 
     const onSubmit = async (data) => {
-        // try {
-        //     const response = await postRequest("http://localhost:2222/api/posts/all", data);
-        //     console.log(response);
-        // } catch (error) {
-        //     console.error("Error submitting data:", error);
-        // }
         try {
-            const response = await getRequest("http://localhost:2222/api/posts/all");
+            const response = await postRequest("http://localhost:2222/api/posts/all", data);
             console.log(response);
         } catch (error) {
             console.error("Error submitting data:", error);
@@ -38,8 +32,6 @@ export default function CreatePost() {
             <div className="bg-gray-100 shadow-xl text-center p-5 sm:p-10 md:p-10 lg:p-16 rounded-3xl">
                 <h1 className="text-3xl">Create Posts</h1>
                 <p className="mb-10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, iure.</p>
-                
-                
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col gap-5 md:flex-row">
                         <div className="flex flex-col w-full gap-5">
@@ -81,9 +73,6 @@ export default function CreatePost() {
 
                     <Button className="mt-10" type="submit">Submit</Button>
                 </form>
-
-
-
             </div>
         </div>
     );

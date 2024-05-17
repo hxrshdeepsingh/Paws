@@ -42,10 +42,10 @@ export default function header() {
                                     </DrawerHeader>
                                     <DrawerFooter>
                                         <Button variant="secondary">
-                                            <Link href={"/register"} className="flex">Register</Link>
+                                            <Link href={"/account/register"} className="flex">Register</Link>
                                         </Button>
                                         <Button variant="default">
-                                            <Link href={"/login"} className="flex">Login</Link>
+                                            <Link href={"/account/login"} className="flex">Login</Link>
                                         </Button>
                                     </DrawerFooter>
                                 </DrawerContent>
@@ -68,7 +68,7 @@ export default function header() {
 
                     <div className="w-1/5 hidden sm:hidden md:flex gap-x-3 justify-end ">
                         <Button variant="secondary">
-                            <PersonIcon className="mr-2 h-4 w-4" /> <Link href={"/sign-in"}>Sign In</Link>
+                            <PersonIcon className="mr-2 h-4 w-4" /> <Link href={"/account/register"}>Register</Link>
                         </Button>
                     </div>
                 </div >
