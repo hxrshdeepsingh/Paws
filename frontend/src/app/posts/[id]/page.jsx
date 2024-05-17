@@ -18,12 +18,14 @@ export default function Post({ params }) {
 
     return (
         <>
-            {post && (
-                <div>
-                    <h2>{post.name}</h2>
-                    <p>{post.description}</p>
-                </div>
-            )}
+            <div className="container min-h-screen">
+                {post && (
+                    <div>
+                        <h2>{post.name}</h2>
+                        <p>{post.description}</p>
+                    </div>
+                )}
+            </div>
         </>
     );
 }
