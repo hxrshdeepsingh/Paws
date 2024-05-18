@@ -1,20 +1,42 @@
 "use client"
-import { useForm } from 'react-hook-form';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast"
 
-import {postRequest} from "../../../lib/api"
+import Cookies from 'js-cookie';
+import { useForm } from 'react-hook-form';
+import { postRequest } from "../../../lib/api"
+import { useRouter } from 'next/navigation';
+
 
 export default function login() {
+    const { toast } = useToast()
+    const { push } = useRouter();
     const { register, handleSubmit } = useForm();
-    const onSubmit = async (data) => {
+
+    async function launchToast(variant, title, description) {
+        toast({
+            variant: variant,
+            title: title,
+            description: description,
+        })
+    }
+
+    async function onSubmit(data) {
         try {
             const response = await postRequest("http://localhost:2222/api/account/signin", data);
-            console.log(response);
+            const token = response.data.token;
+            Cookies.set('pjwt', token, { expires: 7 });
+            launchToast("", "Account created succesfully!", "Wait for redirection");
+            setTimeout(() => {
+                push('/posts');
+            }, 2000)
+
         } catch (error) {
-            console.error("Error submitting data:", error);
+            const errorMessage = error.response?.data?.message || "Please try again";
+            launchToast("destructive", "Error occurred", errorMessage);
         }
     };
     return (
