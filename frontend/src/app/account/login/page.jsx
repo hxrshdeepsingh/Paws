@@ -30,7 +30,6 @@ export default function login() {
             const token = response.data.token;
             Cookies.set('pjwt', token, { expires: 7 });
             launchToast("", "Account created succesfully!", "Wait for redirection");
-            console.log(response.data)
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             setTimeout(() => {
                 push('/posts');
