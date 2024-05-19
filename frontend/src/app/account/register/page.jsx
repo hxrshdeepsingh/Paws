@@ -27,13 +27,18 @@ export default function register() {
         try {
             const response = await postRequest("http://localhost:2222/api/account/signup", data);
             const token = response.data.token;
-            Cookies.set('pjwt', token, { expires: 7 });
-            launchToast("", "Account created succesfully!", "Wait for redirection");
-            setTimeout(() => {
-                push('/posts');
-            }, 2000)
+            if (token) {
+                Cookies.set('pjwt', token, { expires: 7 });
+                launchToast("", "Account created succesfully!", "Wait for redirection");
+                console.log(response.data)
+                localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+                setTimeout(() => {
+                    push('/posts');
+                }, 1000)
+            }
 
         } catch (error) {
+            console.log(error)
             const errorMessage = error.response?.data?.message || "Please try again";
             launchToast("destructive", "Error occurred", errorMessage);
         }

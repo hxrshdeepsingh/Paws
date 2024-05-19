@@ -1,6 +1,10 @@
+"use client"
+
 import { Button } from "./ui/button"
-import { EnvelopeOpenIcon, RowsIcon, PersonIcon, ArrowTopRightIcon } from "@radix-ui/react-icons"
+import { RowsIcon, PersonIcon, ArrowTopRightIcon } from "@radix-ui/react-icons"
+
 import Link from "next/link"
+import { useEffect, useState } from 'react';
 
 import {
     Drawer,
@@ -13,6 +17,16 @@ import {
 } from "@/components/ui/drawer";
 
 export default function header() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        setUser(localStorage.getItem("userInfo"));
+        if (user) {
+            setUser(JSON.parse(userInfo));
+        }
+    }, []);
+
+
     return (
         <>
             <header className=" shadow-lg">
