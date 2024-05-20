@@ -33,11 +33,11 @@ const getPost = async (req, res) => {
 
 // @public
 const getUserPosts = async (req, res) => {
-	const { user_id } = req.body
+	const { postId } = req.params
 	try {
-		const post = await Post.find({ userId: user_id }).select('-_id -uid')
+		const post = await Post.find({ userId: postId }).select('-_id')
 		if (!post) {
-			return res.status(404).json({ message: 'Posts not found' })
+			return res.status(404).json({ message: 'Posts not found, try again' })
 		} else {
 			return res.status(200).json(post)
 		}

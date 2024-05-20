@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const verifyToken = (req, res, next) => {
-	const token = req.body.token
+	const token = req.headers['authorization']
 	if (!token) {
 		return res.status(401).json({ message: 'Unauthorized' })
 	}

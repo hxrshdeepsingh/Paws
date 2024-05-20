@@ -8,7 +8,7 @@ async function postRequest(url, data) {
 	try {
 		const res = await axios.post(url, data, {
 			headers: {
-				Authorization: `Bearer ${cookie}`,
+				Authorization: `${cookie}`,
 			},
 			withCredentials: true,
 		})

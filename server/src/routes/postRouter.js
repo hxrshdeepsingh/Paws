@@ -11,7 +11,7 @@ const { verifyToken } = require('../middlewares/userAuth')
 
 router.get('/all', getPosts)
 router.get('/:postId', getPost)
-router.get('/getUserPosts', getUserPosts)
+router.get('/userPosts/:postId', getUserPosts)
 
 router.put('/update', verifyToken, updatePost)
 router.post('/create', verifyToken, createPost)

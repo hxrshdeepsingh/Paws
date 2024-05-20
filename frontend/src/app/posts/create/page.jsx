@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from 'react-hook-form';
+import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from 'next/navigation';
 import {
     Select,
     SelectContent,
@@ -27,13 +29,28 @@ import { postRequest } from "../../../lib/api"
 
 export default function CreatePost() {
     const { register, handleSubmit, setValue } = useForm();
+    const { toast } = useToast()
+    const { push } = useRouter();
+
+    async function launchToast(variant, title, description) {
+        toast({
+            variant: variant,
+            title: title,
+            description: description,
+        })
+    }
 
     const onSubmit = async (data) => {
         try {
             const response = await postRequest("http://localhost:2222/api/posts/create", data);
-            console.log(response);
+            if (response) {
+                launchToast('', 'Post created successfully', 'Wait for redirection!')
+                setTimeout(() => {
+                    push("/posts")
+                }, 2000)
+            }
         } catch (error) {
-            console.error("Error submitting data:", error);
+            launchToast('destructive', 'Error occured', 'try again!!')
         }
     };
 

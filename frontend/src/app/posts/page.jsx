@@ -29,8 +29,8 @@ export default function Posts() {
                 <hr className="h-6 w-full my-6" />
 
                 <div className="flex flex-col gap-5">
-                    {posts.map(post => (
-                        <div key={post.postId}>
+                    {posts.map((post, index) => (
+                        <div key={index}>
                             <div className="gap-5 shadow-lg p-5 rounded-xl flex flex-col md:flex-row">
                                 <div className="flex flex-col justify-between gap-3 object-cover">
                                     <Image src="/assets/w.webp" alt="sdsdsds" objectFit="cover" width={300} height={300} />
