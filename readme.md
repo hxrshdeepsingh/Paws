@@ -14,3 +14,16 @@ I have created a website where users can adopt pets from other users. They can p
 
 ### Database:
 - MongoDB
+
+## How to Run Locally:
+
+```bash
+git clone https://github.com/hxrshdeepsingh/Paws.git
+
+cd frontend
+
+npm install
+
+cd ../server
+
+npm install
