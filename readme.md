@@ -19,11 +19,19 @@ I have created a website where users can adopt pets from other users. They can p
 
 ```bash
 git clone https://github.com/hxrshdeepsingh/Paws.git
-
+```
+```bash
 cd frontend
-
+```
+```bash
 npm install
+```
 
-cd ../server
-
-npm install
+run server using
+```bash
+npm run server
+```
+run next js app
+```bash
+npm run dev
+```
