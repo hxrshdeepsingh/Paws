@@ -88,7 +88,7 @@ export default function header() {
                             <ul className="flex gap-x-5 w-full text-md justify-center">
                                 <li><Link href={"/about"}>About</Link></li>
                                 <li><Link href={"/Contact"}>Contact</Link></li>
-                                <li><Link href={"/account/create"}>Create</Link></li>
+                                <li><Link href={"/posts/create"}>Create</Link></li>
                                 <li><Link href={"/posts"}>pets</Link></li>
                             </ul>
                         </div>

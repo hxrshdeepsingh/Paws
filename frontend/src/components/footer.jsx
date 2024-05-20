@@ -9,7 +9,7 @@ export default function footer() {
             <footer className="bg-gray-950 text-white">
                 <div className="container py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                     <div className="w-full text-center md:text-start">
-                        <h2 className="text-3xl font-semibold mb-10 uppercase">paws</h2>
+                        <h2 className="text-xl font-semibold mb-10 capitalize">PAWS & PEOPLE</h2>
                         <p>tel:+91 3789-3828</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing<br /> elit. Accusamus, reprehenderit?</p>
                     </div>

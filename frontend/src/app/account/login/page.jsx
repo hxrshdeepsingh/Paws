@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
@@ -42,15 +50,24 @@ export default function login() {
     };
     return (
         <>
-            <div className="container py-5">
+            <div className="container py-5 flex justify-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Label className="capitalize" htmlFor="email">Email Address</Label>
-                    <Input {...register("email")} type="text" id="email" placeholder="Enter your email address..." />
+                    <Card className="sm:w-[380px]">
+                        <CardHeader>
+                            <CardTitle>Login Account</CardTitle>
+                            <CardDescription>Please enter your username and password to access your account:</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Label className="capitalize" htmlFor="email">Email Address</Label>
+                            <Input {...register("email")} type="text" id="email" placeholder="Enter your email address..." />
 
-                    <Label className="capitalize" htmlFor="password">Your password</Label>
-                    <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
-
-                    <Button className="mt-10" type="submit">Submit</Button>
+                            <Label className="capitalize" htmlFor="password">Your password</Label>
+                            <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
+                        </CardContent>
+                        <CardFooter>
+                            <Button className="mt-10" type="submit">Submit</Button>
+                        </CardFooter>
+                    </Card>
                 </form>
             </div>
         </>

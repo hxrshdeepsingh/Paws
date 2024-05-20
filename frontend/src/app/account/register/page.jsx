@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
@@ -37,7 +45,6 @@ export default function register() {
             }
 
         } catch (error) {
-            console.log(error)
             const errorMessage = error.response?.data?.message || "Please try again";
             launchToast("destructive", "Error occurred", errorMessage);
         }
@@ -45,17 +52,38 @@ export default function register() {
 
     return (
         <>
-            <div className="container py-5">
-                <h1 className='font-semibold'>Register</h1>
-
+            <div className="container py-5 flex justify-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Label className="capitalize" htmlFor="email">Your email address</Label>
-                    <Input {...register("email")} type="text" id="email" placeholder="Enter your email..." />
+                    <Card className="sm:w-[380px]">
+                        <CardHeader>
+                            <CardTitle>Create Account</CardTitle>
+                            <CardDescription>Create your account by filling in the details below</CardDescription>
+                        </CardHeader>
+                        <CardContent className="capitalize">
 
-                    <Label className="capitalize" htmlFor="password">Enter password</Label>
-                    <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
+                            <Label htmlFor="username">Enter username</Label>
+                            <Input {...register("username")} type="username" id="username" placeholder="Enter your username..." />
 
-                    <Button className="mt-10" type="submit">Submit</Button>
+                            <Label htmlFor="email">Your email address</Label>
+                            <Input {...register("email")} type="text" id="email" placeholder="Enter your email..." />
+
+                            <Label htmlFor="password">Enter password</Label>
+                            <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
+
+                            <Label htmlFor="number">Enter phone number</Label>
+                            <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." />
+
+                            <Label htmlFor="address">Enter address</Label>
+                            <Input {...register("address")} type="text" id="address" placeholder="Enter your address..." />
+
+                            <Label htmlFor="state">Enter state</Label>
+                            <Input {...register("state")} type="text" id="state" placeholder="Enter state..." />
+
+                        </CardContent>
+                        <CardFooter>
+                            <Button className="mt-10" type="submit">Submit</Button>
+                        </CardFooter>
+                    </Card>
                 </form>
             </div>
         </>

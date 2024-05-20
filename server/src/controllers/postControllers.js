@@ -50,7 +50,7 @@ const getUserPosts = async (req, res) => {
 
 // @protected
 const createPost = async (req, res) => {
-	const { name, description } = req.body
+	const { name, description, age, gender, breed } = req.body
 	const { token } = req
 	const uuid = uuidv4()
 	try {
@@ -60,6 +60,15 @@ const createPost = async (req, res) => {
 			const post = new Post({
 				name: name,
 				description: description,
+				age: age,
+				gender: gender,
+				breed: breed,
+
+				username: match.username,
+				location: match.location,
+				number: match.number,
+				email: match.email,
+
 				userId: token.public_id,
 				postId: uuid,
 			})

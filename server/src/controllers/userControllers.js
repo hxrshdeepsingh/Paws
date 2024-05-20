@@ -7,7 +7,7 @@ dotenv.config()
 
 // @protected
 const signup = async (req, res) => {
-	const { username, password, email } = req.body
+	const { username, password, email, number, address, state } = req.body
 	try {
 		const existingUser = await User.findOne({ email: email })
 		if (existingUser) {
@@ -21,6 +21,9 @@ const signup = async (req, res) => {
 				username: username,
 				email: email,
 				password: hashedPassword,
+				number: number,
+				address: address,
+				state: state,
 				public_id: uuid,
 			})
 
@@ -29,11 +32,6 @@ const signup = async (req, res) => {
 				public_id: creation.public_id,
 			}
 			const token = jwt.sign(tokenPayload, process.env.SECRET_KEY)
-
-			// res.cookie('token1', token, {
-			// 	httpOnly: true,
-			// })
-
 			return res.status(201).json({ token: token, user: creation })
 		}
 	} catch (error) {
@@ -60,10 +58,6 @@ const signin = async (req, res) => {
 			{ private_id: existingUser._id, public_id: existingUser.public_id },
 			process.env.SECRET_KEY,
 		)
-
-		// res.cookie('token1', token, {
-		// 	httpOnly: true,
-		// })
 
 		return res.status(201).json({ token: token, user: existingUser })
 	} catch (error) {

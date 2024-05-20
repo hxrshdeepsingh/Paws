@@ -3,7 +3,12 @@ const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
 const cors = require('cors')
-app.use(cors())
+app.use(
+	cors({
+		origin: 'http://localhost:3000',
+		credentials: true,
+	}),
+)
 
 const userRoute = require('./src/routes/userRouter')
 const postRoute = require('./src/routes/postRouter')
