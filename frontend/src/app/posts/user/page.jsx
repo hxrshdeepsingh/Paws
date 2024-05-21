@@ -29,25 +29,27 @@ export default function UserPost() {
     }, []);
 
     return (
-        <div className="container py-5 flex justify-center flex-col items-center">
-            {posts.map((post, index) => (
-                <div key={index}>
-                    <div className="gap-5 shadow-lg p-5 rounded-xl flex flex-col md:flex-row">
-                        <div className="flex flex-col justify-between gap-3 object-cover">
-                            <Image src="/assets/w.webp" alt="sdsdsds" objectFit="cover" width={300} height={300} />
-                        </div>
-                        <div>
-                            <h2 className="text-xl font-semibold">title</h2>
-                            <p className="mt-2">Meet {post.name}</p>
-                            <p className="mt-2">Cat</p>
-                            <p>{post.description}</p>
-                            <Button>
-                                <Link href={`/posts/${post.postId}`}>Check</Link>
-                            </Button>
+        <>
+            <div className="container py-5 flex justify-center flex-col items-center">
+                {posts.map((post, index) => (
+                    <div key={index}>
+                        <div className="gap-5 shadow-lg p-5 rounded-xl flex flex-col md:flex-row">
+                            <div className="flex flex-col justify-between gap-3 object-cover">
+                                <Image src="/assets/w.webp" alt="sdsdsds" objectFit="cover" width={300} height={300} />
+                            </div>
+                            <div>
+                                <h2 className="text-xl font-semibold">title</h2>
+                                <p className="mt-2">Meet {post.name}</p>
+                                <p className="mt-2">Cat</p>
+                                <p>{post.description}</p>
+                                <Button>
+                                    <Link href={`/posts/${post.postId}`}>Check</Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </>
     );
 }
