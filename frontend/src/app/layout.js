@@ -2,6 +2,7 @@ import '../style/globals.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
+import ProgressProvider from '@/components/progressProvider'
 import { Toaster } from '@/components/ui/toaster'
 
 import { Inter } from 'next/font/google'
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={inter.className}>
 				<Header />
-				{children}
+				<ProgressProvider>{children}</ProgressProvider>
 				<Footer />
 				<Toaster />
 			</body>

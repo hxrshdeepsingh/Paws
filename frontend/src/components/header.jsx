@@ -122,7 +122,7 @@ export default function header() {
                                         <DropdownMenuSeparator />
                                         <DropdownMenuGroup>
                                             <DropdownMenuItem>
-                                                Profile
+                                                <Link className="h-full w-full" href={"/account"}>Profile</Link>
                                                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem>
