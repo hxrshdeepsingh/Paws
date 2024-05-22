@@ -4,60 +4,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+
 import { useForm } from 'react-hook-form';
-import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from 'next/navigation';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-
-
-import { postRequest } from "../../../lib/api"
+import { postFormSubmit } from "../../../components/utils/formUtils";
 
 export default function newPost() {
     const { register, handleSubmit, setValue } = useForm();
-    const { toast } = useToast()
-    const { push } = useRouter();
+    const url = "http://localhost:2222/api/posts/create"
 
-    async function launchToast(variant, title, description) {
-        toast({
-            variant: variant,
-            title: title,
-            description: description,
-        })
-    }
-
-    const onSubmit = async (data) => {
-        try {
-            const response = await postRequest("http://localhost:2222/api/posts/create", data);
-            if (response) {
-                launchToast('', 'Post created successfully', 'Wait for redirection!')
-                setTimeout(() => {
-                    push("/posts")
-                }, 2000)
-            }
-        } catch (error) {
-            launchToast('destructive', 'Error occured', 'try again!!')
-        }
+    const onSubmitHandler = async (data) => {
+        await postFormSubmit( url, data);
     };
 
     return (
         <>
             <div className="container py-5 flex justify-center">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmitHandler)}>
                     <Card className="sm:w-[380px]">
                         <CardHeader>
                             <CardTitle>Create Posts</CardTitle>
