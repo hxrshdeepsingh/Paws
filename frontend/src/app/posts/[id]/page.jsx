@@ -21,7 +21,7 @@ export default function Post({ params }) {
 
     return (
         <>
-            <div className="container w-full md:w-3/4 mx-auto py-5">
+            <div className="container min-h-screen w-full md:w-3/4 mx-auto py-5">
                 <h1 className="text-3xl font-bold mb-5">All Paws near you</h1>
                 <hr className="h-6 w-full my-6" />
 

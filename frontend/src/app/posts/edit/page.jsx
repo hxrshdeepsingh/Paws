@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-export default function UserPost() {
+export default function editPost() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {

@@ -9,8 +9,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-	title: 'Homepage',
-	description: 'Lorem Ipsum',
+	title: 'Pet Adoption Center - Find Your Perfect Pet',
+	description: 'Welcome to the Pet Adoption Center, where you can find your perfect pet companion. Browse our adoptable animals, learn about our adoption process, and make a difference in an animal life.',
 }
 
 export default function RootLayout({ children }) {

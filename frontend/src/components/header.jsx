@@ -46,8 +46,8 @@ export default function header() {
 
     return (
         <>
-            <header className="shadow">
-                <div className="container flex justify-between py-4 align-middle">
+            <header className="shadow h-20">
+                <div className="container flex flex-row justify-between items-center">
 
                     <div className="w-1/3 flex align-middle justify-start my-auto">
                         <div className="text-xl uppercase font-semibold">
@@ -87,8 +87,8 @@ export default function header() {
                         <div className="hidden md:flex capitalize">
                             <ul className="flex gap-x-5 w-full text-md justify-center">
                                 <li><Link href={"/about"}>About</Link></li>
-                                <li><Link href={"/Contact"}>Contact</Link></li>
-                                <li><Link href={"/posts/create"}>Create</Link></li>
+                                <li><Link href={"/contact"}>Contact</Link></li>
+                                <li><Link href={"/posts/new"}>Create</Link></li>
                                 <li><Link href={"/posts"}>pets</Link></li>
                             </ul>
                         </div>

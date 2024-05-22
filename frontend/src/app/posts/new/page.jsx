@@ -27,7 +27,7 @@ import {
 
 import { postRequest } from "../../../lib/api"
 
-export default function CreatePost() {
+export default function newPost() {
     const { register, handleSubmit, setValue } = useForm();
     const { toast } = useToast()
     const { push } = useRouter();
