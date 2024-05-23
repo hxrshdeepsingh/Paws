@@ -68,26 +68,27 @@ const signin = async (req, res) => {
 
 // @protected
 const update = async (req, res) => {
-	const { token } = req;
-	const { data } = req.body;
+	const { token } = req
+	const { data } = req.body
 	try {
 		const updatedUser = await User.findOneAndUpdate(
 			{ _id: token.private_id },
 			{ $set: data },
-			{ new: true }
-		);
+			{ new: true },
+		)
 
 		if (!updatedUser) {
-			return res.status(404).json({ message: 'User not found' });
+			return res.status(404).json({ message: 'User not found' })
 		}
 
-		return res.status(200).json(updatedUser);
+		return res.status(200).json(updatedUser)
 	} catch (error) {
-		console.error("Error occurred:", error);
-		return res.status(500).json({ message: 'An error occurred', error: error.message });
+		console.error('Error occurred:', error)
+		return res
+			.status(500)
+			.json({ message: 'An error occurred', error: error.message })
 	}
-};
-
+}
 
 // @Public
 const profile = async (req, res) => {

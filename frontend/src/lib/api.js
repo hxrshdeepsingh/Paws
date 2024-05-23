@@ -22,7 +22,7 @@ async function postRequest(url, data) {
 async function putRequest(url, data) {
 	const cookie = Cookies.get('pjwt')
 	const updatedData = {
-		data
+		data,
 	}
 	try {
 		const res = await axios.put(url, updatedData, {
@@ -55,8 +55,6 @@ async function getRequest(url) {
 }
 
 export { postRequest, getRequest, putRequest }
-
-
 
 // 'use client'
 
