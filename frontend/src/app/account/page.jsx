@@ -1,26 +1,16 @@
 "use client"
 
-import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
-import { postRequest } from "../../lib/api"
-import { useRouter } from 'next/navigation';
+import { putRequest } from "../../lib/api"
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function register() {
     const { toast } = useToast()
-    const { push } = useRouter();
     const { register, handleSubmit } = useForm();
 
     async function launchToast(variant, title, description) {
@@ -33,15 +23,9 @@ export default function register() {
 
     async function onSubmit(data) {
         try {
-            const response = await postRequest("http://localhost:2222/api/account/signup", data);
-            const token = response.data.token;
-            if (token) {
-                Cookies.set('pjwt', token, { expires: 7 });
-                launchToast("", "Account created succesfully!", "Wait for redirection");
-                localStorage.setItem("userInfo", JSON.stringify(response.data.user));
-                setTimeout(() => {
-                    push('/posts');
-                }, 1000)
+            const response = await putRequest("http://localhost:2222/api/account/update", data);
+            if (response){
+                launchToast("default", "Updated Succesfully", "");
             }
 
         } catch (error) {
@@ -53,11 +37,11 @@ export default function register() {
     return (
         <>
             <div className="container py-5 flex justify-center">
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                     <Card className="sm:w-[380px]">
                         <CardHeader>
-                            <CardTitle>Create Account</CardTitle>
-                            <CardDescription>Create your account by filling in the details below</CardDescription>
+                            <CardTitle>Update Account</CardTitle>
+                            <CardDescription>Update your account by filling in the details below</CardDescription>
                         </CardHeader>
                         <CardContent className="capitalize">
 
@@ -67,8 +51,8 @@ export default function register() {
                             <Label htmlFor="email">Your email address</Label>
                             <Input {...register("email")} type="text" id="email" placeholder="Enter your email..." />
 
-                            <Label htmlFor="password">Enter password</Label>
-                            <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
+                            {/* <Label htmlFor="password">Enter password</Label>
+                            <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." /> */}
 
                             <Label htmlFor="number">Enter phone number</Label>
                             <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." />

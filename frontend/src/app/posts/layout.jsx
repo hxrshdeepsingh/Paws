@@ -1,7 +1,7 @@
 export default function Layout({ children }) {
     return (
         <>
-            <main className="container bg-fuchsia-700 min-h-[100vh]">
+            <main className="container bg-gray-100 min-h-[100vh]">
                 {children}
             </main>
         </>

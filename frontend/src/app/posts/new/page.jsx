@@ -7,21 +7,45 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
+import { postRequest } from "../../../lib/api"
+import { useRouter } from 'next/navigation';
+import { useToast } from "@/components/ui/use-toast"
 import { useForm } from 'react-hook-form';
-import { postFormSubmit } from "../../../components/utils/formUtils";
+
 
 export default function newPost() {
+    const { toast } = useToast()
+    const { push } = useRouter();
     const { register, handleSubmit, setValue } = useForm();
-    const url = "http://localhost:2222/api/posts/create"
 
-    const onSubmitHandler = async (data) => {
-        await postFormSubmit( url, data);
+    async function launchToast(variant, title, description) {
+        toast({
+            variant: variant,
+            title: title,
+            description: description,
+        })
+    }
+
+    async function onSubmit(data) {
+        try {
+            const response = await postRequest("http://localhost:2222/api/posts/create", data);
+            if (response){
+                launchToast("", "Post created succesfully!", "Wait for redirection");
+                setTimeout(() => {
+                    push('/posts');
+                }, 1000)
+            }
+
+
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || "Please try again";
+            launchToast("destructive", "Error occurred", errorMessage);
+        }
     };
-
     return (
         <>
             <div className="container py-5 flex justify-center">
-                <form onSubmit={handleSubmit(onSubmitHandler)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <Card className="sm:w-[380px]">
                         <CardHeader>
                             <CardTitle>Create Posts</CardTitle>

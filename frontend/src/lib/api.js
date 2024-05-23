@@ -19,13 +19,92 @@ async function postRequest(url, data) {
 	}
 }
 
-async function getRequest(url) {
+async function putRequest(url, data) {
+	const cookie = Cookies.get('pjwt')
+	const updatedData = {
+		data
+	}
 	try {
-		const res = await axios.get(url)
+		const res = await axios.put(url, updatedData, {
+			headers: {
+				Authorization: `${cookie}`,
+			},
+			withCredentials: true,
+		})
 		return res
 	} catch (error) {
-		console.log('Error in getRequest:', error)
+		console.log('Error in putRequest:', error)
+		throw error
 	}
 }
 
-module.exports = { postRequest, getRequest }
+async function getRequest(url) {
+	const cookie = Cookies.get('pjwt')
+	try {
+		const res = await axios.get(url, {
+			headers: {
+				Authorization: `${cookie}`,
+			},
+			withCredentials: true,
+		})
+		return res
+	} catch (error) {
+		console.log('Error in getRequest:', error)
+		throw error
+	}
+}
+
+export { postRequest, getRequest, putRequest }
+
+
+
+// 'use client'
+
+// import axios from 'axios'
+// import Cookies from 'js-cookie'
+
+// async function postRequest(url, data) {
+// 	const cookie = Cookies.get('pjwt')
+// 	try {
+// 		const res = await axios.post(url, data, {
+// 			headers: {
+// 				Authorization: `${cookie}`,
+// 			},
+// 			withCredentials: true,
+// 		})
+// 		return res
+// 	} catch (error) {
+// 		console.log('Error in postRequest:', error)
+// 		throw error
+// 	}
+// }
+
+// async function putRequest(url, data) {
+// 	const cookie = Cookies.get('pjwt')
+// 	const updatedData = {
+// 		data
+// 	}
+// 	try {
+// 		const res = await axios.put(url, updatedData, {
+// 			headers: {
+// 				Authorization: `${cookie}`,
+// 			},
+// 			withCredentials: true,
+// 		})
+// 		return res
+// 	} catch (error) {
+// 		console.log('Error in postRequest:', error)
+// 		throw error
+// 	}
+// }
+
+// async function getRequest(url) {
+// 	try {
+// 		const res = await axios.get(url)
+// 		return res
+// 	} catch (error) {
+// 		console.log('Error in getRequest:', error)
+// 	}
+// }
+
+// module.exports = { postRequest, getRequest, putRequest }
