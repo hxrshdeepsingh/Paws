@@ -19,6 +19,22 @@ async function postRequest(url, data) {
 	}
 }
 
+async function deleteRequest(url) {
+	const cookie = Cookies.get('pjwt')
+	try {
+		const res = await axios.delete(url, {
+			headers: {
+				Authorization: `${cookie}`,
+			},
+			withCredentials: true,
+		})
+		return res
+	} catch (error) {
+		console.log('Error in postRequest:', error)
+		throw error
+	}
+}
+
 async function putRequest(url, data) {
 	const cookie = Cookies.get('pjwt')
 	const updatedData = {
@@ -54,55 +70,4 @@ async function getRequest(url) {
 	}
 }
 
-export { postRequest, getRequest, putRequest }
-
-// 'use client'
-
-// import axios from 'axios'
-// import Cookies from 'js-cookie'
-
-// async function postRequest(url, data) {
-// 	const cookie = Cookies.get('pjwt')
-// 	try {
-// 		const res = await axios.post(url, data, {
-// 			headers: {
-// 				Authorization: `${cookie}`,
-// 			},
-// 			withCredentials: true,
-// 		})
-// 		return res
-// 	} catch (error) {
-// 		console.log('Error in postRequest:', error)
-// 		throw error
-// 	}
-// }
-
-// async function putRequest(url, data) {
-// 	const cookie = Cookies.get('pjwt')
-// 	const updatedData = {
-// 		data
-// 	}
-// 	try {
-// 		const res = await axios.put(url, updatedData, {
-// 			headers: {
-// 				Authorization: `${cookie}`,
-// 			},
-// 			withCredentials: true,
-// 		})
-// 		return res
-// 	} catch (error) {
-// 		console.log('Error in postRequest:', error)
-// 		throw error
-// 	}
-// }
-
-// async function getRequest(url) {
-// 	try {
-// 		const res = await axios.get(url)
-// 		return res
-// 	} catch (error) {
-// 		console.log('Error in getRequest:', error)
-// 	}
-// }
-
-// module.exports = { postRequest, getRequest, putRequest }
+export { postRequest, getRequest, putRequest, deleteRequest }

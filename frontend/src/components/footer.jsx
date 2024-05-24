@@ -3,7 +3,7 @@ import { Input } from "./ui/input"
 
 import Link from "next/link"
 
-export default function footer() {
+export default function Footer() {
     return (
         <>
             <footer className="bg-gray-950 text-white">

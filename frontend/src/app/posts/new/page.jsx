@@ -12,76 +12,63 @@ import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast"
 import { useForm } from 'react-hook-form';
 
-
 export default function newPost() {
     const { toast } = useToast()
     const { push } = useRouter();
     const { register, handleSubmit, setValue } = useForm();
 
-    async function launchToast(variant, title, description) {
-        toast({
-            variant: variant,
-            title: title,
-            description: description,
-        })
-    }
-
     async function onSubmit(data) {
         try {
             const response = await postRequest("http://localhost:2222/api/posts/create", data);
-            if (response){
-                launchToast("", "Post created succesfully!", "Wait for redirection");
+            if (response) {
+                toast({ variant: "default", title: "Post created succesfully!", description: "Wait for redirection" });
                 setTimeout(() => {
                     push('/posts');
                 }, 1000)
             }
-
-
         } catch (error) {
-            const errorMessage = error.response?.data?.message || "Please try again";
             launchToast("destructive", "Error occurred", errorMessage);
+            toast({ variant: "destructive", title: "Error occurred", description: "Try again!!!" });
         }
     };
     return (
         <>
-            <div className="container py-5 flex justify-center">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <Card className="sm:w-[380px]">
-                        <CardHeader>
-                            <CardTitle>Create Posts</CardTitle>
-                            <CardDescription> Create a new post to share your ideas, stories, or questions with our community.</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <Label className="capitalize" htmlFor="name">Pet's name</Label>
-                            <Input {...register("name")} type="text" id="name" placeholder="Enter your pet name here..." />
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Card className="sm:w-[380px]">
+                    <CardHeader>
+                        <CardTitle>Create Posts</CardTitle>
+                        <CardDescription> Create a new post to share your ideas, stories, or questions with our community.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Label className="capitalize" htmlFor="name">Pet's name</Label>
+                        <Input {...register("name")} type="text" id="name" placeholder="Enter your pet name here..." />
 
-                            <Label className="capitalize" htmlFor="age">Pet's age</Label>
-                            <Input {...register("age")} type="number" id="age" placeholder="Enter your pet's age here..." />
+                        <Label className="capitalize" htmlFor="age">Pet's age</Label>
+                        <Input {...register("age")} type="number" id="age" placeholder="Enter your pet's age here..." />
 
-                            <Label className="capitalize" htmlFor="gender">Pet's gender</Label>
-                            <Select onValueChange={(value) => setValue("gender", value)}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select your pet's gender..." />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="male">Male</SelectItem>
-                                    <SelectItem value="female">Female</SelectItem>
-                                </SelectContent>
-                            </Select>
+                        <Label className="capitalize" htmlFor="gender">Pet's gender</Label>
+                        <Select onValueChange={(value) => setValue("gender", value)}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select your pet's gender..." />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="male">Male</SelectItem>
+                                <SelectItem value="female">Female</SelectItem>
+                            </SelectContent>
+                        </Select>
 
-                            <Label className="capitalize" htmlFor="breed">Pet's breed</Label>
-                            <Input {...register("breed")} type="text" id="breed" placeholder="Enter your pet's breed here..." />
+                        <Label className="capitalize" htmlFor="breed">Pet's breed</Label>
+                        <Input {...register("breed")} type="text" id="breed" placeholder="Enter your pet's breed here..." />
 
-                            <Label htmlFor="description">Tell About your pets</Label>
-                            <Textarea {...register("description")} id="description" rows="7" placeholder="Enter your description here..."></Textarea>
+                        <Label htmlFor="description">Tell About your pets</Label>
+                        <Textarea {...register("description")} id="description" rows="7" placeholder="Enter your description here..."></Textarea>
 
-                        </CardContent>
-                        <CardFooter>
-                            <Button className="mt-10" type="submit">Submit</Button>
-                        </CardFooter>
-                    </Card>
-                </form>
-            </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button className="mt-10" type="submit">Submit</Button>
+                    </CardFooter>
+                </Card>
+            </form>
         </>
     );
 }

@@ -107,8 +107,8 @@ const updatePost = async (req, res) => {
 
 // @protected
 const deletePost = async (req, res) => {
-	const { postId } = req.body
 	const { token } = req
+	const { postId } = req.params
 	try {
 		const post = await Post.findOne({ userId: token.public_id, postId: postId })
 		if (post) {

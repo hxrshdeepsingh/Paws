@@ -15,6 +15,6 @@ router.get('/userPosts/:postId', getUserPosts)
 
 router.put('/update', verifyToken, updatePost)
 router.post('/create', verifyToken, createPost)
-router.delete('/delete', verifyToken, deletePost)
+router.delete('/delete/:postId', verifyToken, deletePost)
 
 module.exports = router
