@@ -86,12 +86,13 @@ const createPost = async (req, res) => {
 
 // @protected
 const updatePost = async (req, res) => {
-	const { postId, updatedData } = req.body
 	const { token } = req
+	const { data } = req.body
 	try {
+		// console.log(token, data.data, data.postId )
 		const updatedPost = await Post.findOneAndUpdate(
-			{ postId: postId, userId: token.public_id },
-			{ $set: updatedData },
+			{ postId: data.postId, userId: token.public_id },
+			{ $set: data.data },
 			{ new: true },
 		)
 		if (!updatedPost) {

@@ -34,7 +34,11 @@ export default function Post({ params }) {
 
     async function onSubmit(data) {
         try {
-            const response = await putRequest("http://localhost:2222/api/posts/update", data);
+            const reqData = {
+                "data": data,
+                "postId": params.id
+            }
+            const response = await putRequest("http://localhost:2222/api/posts/update", reqData);
             if (response) {
                 toast({ variant: "default", title: "Post updated successfully!", description: "Wait for redirection" });
                 setTimeout(() => {
