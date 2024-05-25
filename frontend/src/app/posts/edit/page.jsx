@@ -14,10 +14,11 @@ export default function editPost() {
     const { push } = useRouter();
 
     useEffect(() => {
-        const UIS = localStorage.getItem("userInfo");
+        const UIS = localStorage.getItem("userApi");
         if (UIS) {
             const userInfo = JSON.parse(UIS);
             const url = `http://localhost:2222/api/posts/userPosts/${userInfo.public_id}`;
+            console.log(url)
 
             async function fetchUserPosts(url) {
                 try {

@@ -27,7 +27,6 @@ export default function newPost() {
                 }, 1000)
             }
         } catch (error) {
-            launchToast("destructive", "Error occurred", errorMessage);
             toast({ variant: "destructive", title: "Error occurred", description: "Try again!!!" });
         }
     };

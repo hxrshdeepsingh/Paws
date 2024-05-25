@@ -39,6 +39,7 @@ export default function register() {
                 Cookies.set('pjwt', token, { expires: 7 });
                 launchToast("", "Account created succesfully!", "Wait for redirection");
                 localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+                localStorage.setItem("userApi", JSON.stringify(response.data.user));
                 setTimeout(() => {
                     push('/posts');
                 }, 1000)

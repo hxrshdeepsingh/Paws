@@ -4,14 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
@@ -39,6 +32,7 @@ export default function login() {
             Cookies.set('pjwt', token, { expires: 7 });
             launchToast("", "Account created succesfully!", "Wait for redirection");
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            localStorage.setItem("userApi", JSON.stringify(response.data.user));
             setTimeout(() => {
                 push('/posts');
             }, 1000)
