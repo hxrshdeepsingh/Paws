@@ -22,7 +22,6 @@ export default function Account() {
         if (storedUserInfo) {
             const parsedUserInfo = JSON.parse(storedUserInfo);
             setUserInfo(parsedUserInfo);
-            // Set default values for the form fields
             setValue("username", parsedUserInfo.username);
             setValue("email", parsedUserInfo.email);
             setValue("number", parsedUserInfo.number);

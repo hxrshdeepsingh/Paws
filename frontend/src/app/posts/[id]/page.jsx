@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import Image from "next/image";
 
 export default function Post({ params }) {
     const [post, setPost] = useState(null);
@@ -11,6 +10,7 @@ export default function Post({ params }) {
         axios.get(`http://localhost:2222/api/posts/${params.id}`)
             .then(response => {
                 setPost(response.data);
+                console.log(response.data)
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -19,28 +19,58 @@ export default function Post({ params }) {
 
     return (
         <>
-            <div className="container min-h-screen w-full md:w-3/4 mx-auto py-5">
-                <h1 className="text-3xl font-bold mb-5">All Paws near you</h1>
-                <hr className="h-6 w-full my-6" />
-
-                <div className="flex flex-col gap-5">
-                    {post && (
-                        <div key={post.postId}>
-                            <div className="gap-5 shadow-lg p-5 rounded-xl flex flex-col md:flex-row">
-                                <div className="flex flex-col justify-between gap-3 object-cover">
-                                    <Image src="/assets/w.webp" alt="sdsdsds" objectFit="cover" width={300} height={300} />
-                                </div>
-                                <div>
-                                    <h2 className="text-xl font-semibold">{post.title}</h2>
-                                    <p className="mt-2">Meet {post.name}</p>
-                                    <p className="mt-2">{post.type}</p>
-                                    <p>{post.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+            {post && (
+                <div key={post.postId}>
+                    <h2>{post.name}</h2>
+                    <p>{post.email}</p>
+                    <p>{post.age}</p>
+                    <p>{post.date}</p>
+                    <p>{post.species}</p>
+                    <p>{post.weight}</p>
+                    <p>{post.vaccinated}</p>
+                    <p>{post.address}</p>
+                    <p>{post.state}</p>
+                    <p>{post.gender}</p>
+                    <p>{post.number}</p>
+                    <p>{post.username}</p>
+                    <p>{post.description}</p>
                 </div>
-            </div>
+            )}
         </>
     );
 }
+
+
+// age
+// : 
+// "0"
+// breed
+// : 
+// "dog"
+// description
+// : 
+// ""
+// email
+// : 
+// "x.gangster.v1@gmail.com"
+// gender
+// : 
+// "male"
+// name
+// : 
+// "zeus"
+// number
+// : 
+// "+91 96809-66795"
+// postId
+// : 
+// "009ff05d-15e0-40fc-89cc-4c4a6141e5ab"
+// userId
+// : 
+// "4bf8933b-ab77-4619-ba40-13bc1cb5cf25"
+// username
+// : 
+// "hxrshdeep singh"
+// __v
+// : 
+// 0

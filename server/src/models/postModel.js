@@ -1,20 +1,24 @@
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-	name: { type: String },
-	description: { type: String },
-	age: { type: String },
-	gender: { type: String },
-	breed: { type: String },
+	name: { type: String, required: true },
+	description: { type: String, required: true },
+	age: { type: String, required: true },
+	gender: { type: String, required: true },
+	breed: { type: String, required: true },
+	species: { type: String, required: true },
+	weight: { type: String, required: true },
+	vaccinated: { type: String, required: true },
 
-	location: { type: String },
-	number: { type: String },
-	email: { type: String },
-	username: { type: String },
+	address: { type: String, required: true },
+	state: { type: String, required: true },
+	number: { type: String, required: true },
+	email: { type: String, required: true },
+	username: { type: String, required: true },
 
-	userId: { type: String },
-	postId: { type: String },
-	uid: { type: String },
+	date: { type: Date, default: Date.now },
+	userId: { type: String, required: true },
+	postId: { type: String, required: true },
 })
 
 const Post = mongoose.model('posts', postSchema)

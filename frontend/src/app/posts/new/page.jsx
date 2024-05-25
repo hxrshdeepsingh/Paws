@@ -45,6 +45,26 @@ export default function newPost() {
                         <Label className="capitalize" htmlFor="age">Pet's age</Label>
                         <Input {...register("age")} type="number" id="age" placeholder="Enter your pet's age here..." />
 
+                        <Label className="capitalize" htmlFor="breed">Pet's breed</Label>
+                        <Input {...register("breed")} type="text" id="breed" placeholder="Enter your pet's breed here..." />
+
+                        <Label className="capitalize" htmlFor="species">Pet's species</Label>
+                        <Input {...register("species")} type="text" id="species" placeholder="Enter your pet's species here..." />
+
+                        <Label className="capitalize" htmlFor="weight">Pet's weight</Label>
+                        <Input {...register("weight")} type="text" id="weight" placeholder="Enter your pet's weight here..." />
+
+                        <Label className="capitalize" htmlFor="vaccinated">Is your pet vaccinated?</Label>
+                        <Select onValueChange={(value) => setValue("vaccinated", value)}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select yes/not..." />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="yes">Yes</SelectItem>
+                                <SelectItem value="no">No</SelectItem>
+                            </SelectContent>
+                        </Select>
+
                         <Label className="capitalize" htmlFor="gender">Pet's gender</Label>
                         <Select onValueChange={(value) => setValue("gender", value)}>
                             <SelectTrigger>
@@ -55,9 +75,6 @@ export default function newPost() {
                                 <SelectItem value="female">Female</SelectItem>
                             </SelectContent>
                         </Select>
-
-                        <Label className="capitalize" htmlFor="breed">Pet's breed</Label>
-                        <Input {...register("breed")} type="text" id="breed" placeholder="Enter your pet's breed here..." />
 
                         <Label htmlFor="description">Tell About your pets</Label>
                         <Textarea {...register("description")} id="description" rows="7" placeholder="Enter your description here..."></Textarea>

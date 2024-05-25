@@ -50,7 +50,8 @@ const getUserPosts = async (req, res) => {
 
 // @protected
 const createPost = async (req, res) => {
-	const { name, description, age, gender, breed } = req.body
+	const { name, description, age, gender, breed, species, weight, vaccinated } =
+		req.body
 	const { token } = req
 	const uuid = uuidv4()
 	try {
@@ -63,9 +64,13 @@ const createPost = async (req, res) => {
 				age: age,
 				gender: gender,
 				breed: breed,
+				species: species,
+				weight: weight,
+				vaccinated: vaccinated,
 
 				username: match.username,
-				location: match.location,
+				state: match.state,
+				address: match.address,
 				number: match.number,
 				email: match.email,
 
@@ -89,7 +94,6 @@ const updatePost = async (req, res) => {
 	const { token } = req
 	const { data } = req.body
 	try {
-		// console.log(token, data.data, data.postId )
 		const updatedPost = await Post.findOneAndUpdate(
 			{ postId: data.postId, userId: token.public_id },
 			{ $set: data.data },

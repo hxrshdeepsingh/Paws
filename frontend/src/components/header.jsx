@@ -13,7 +13,7 @@ export default function Header() {
     };
     return (
         <>
-            <nav className="bg-white shadow-md border-gray-200 dark:bg-gray-900">
+            <nav className="bg-white border-gray-200 dark:bg-gray-900 text-xl">
                 <div className="container  flex flex-wrap items-center justify-between mx-auto py-4">
                     <Link href="/" className="flex items-center">
                         <Image src="/assets/logo.webp" width={100} height={50} alt="Flowbite Logo" />
