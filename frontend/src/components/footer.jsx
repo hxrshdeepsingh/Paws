@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <>
             <footer className="bg-gray-950 text-white">
-                <div className="container">
+                <div className="container md:w-[90%]">
                     <div className="py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                         <div className="w-full text-center md:text-start">
                             <h2 className="text-xl font-semibold mb-10 capitalize">Paws & people</h2>
