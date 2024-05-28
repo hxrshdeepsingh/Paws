@@ -17,6 +17,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
+			<head>
+				<title>{metadata.title}</title>
+				<meta name="description" content={metadata.description} />
+				<meta property="og:title" content={metadata.title} />
+				<meta property="og:description" content={metadata.description} />
+				<meta
+					property="og:image"
+					content="https://paws-xi.vercel.app/assets/dog.png"
+				/>
+				<meta property="og:url" content="https://paws-xi.vercel.app" />
+				<link rel="icon" href="/assets/dog.png" />
+			</head>
 			<body className={inter.className}>
 				<Header />
 				<ProgressProvider>{children}</ProgressProvider>
