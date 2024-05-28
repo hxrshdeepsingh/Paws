@@ -1,9 +1,14 @@
 "use client";
 
+import Link from "next/link";
+
 import { useEffect, useState } from "react";
 import { getRequest } from "../../lib/api";
-import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
+
 
 export default function Posts() {
     const [posts, setPosts] = useState([]);
@@ -23,19 +28,36 @@ export default function Posts() {
 
     return (
         <>
+            <h2>Explore Pets</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
+
+            <Separator className="my-4" />
+
             {posts.map((post, index) => (
-                <div key={index}>
-                    <h2>{post.name}</h2>
-                    <p>{post.age}</p>
-                    <p>{post.date}</p>
-                    <p>{post.species}</p>
-                    <p>{post.weight}</p>
-                    <p>{post.gender}</p>
-                    <p>{post.description}</p>
-                    <Button>
-                        <Link href={`/posts/${post.postId}`}>Check</Link>
-                    </Button>
-                </div>
+                <Card key={index} className="my-4">
+                    <CardHeader>
+                        <CardTitle>{post.name}</CardTitle>
+                        <CardDescription className="text-gray-700">{post.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row justify-between">
+                        <div className="w-full">
+                            <p>Age: {post.age}</p>
+                            <p>Date: {post.date}</p>
+                            <p>Species: {post.species}</p>
+                        </div>
+                        <div className="w-full">
+                            <p>Weight: {post.weight}</p>
+                            <p>Gender: {post.gender}</p>
+                        </div>
+                    </CardContent>
+                    <Separator />
+
+                    <CardFooter className="py-2">
+                        <Button variant="secondary">
+                            <Link href={`/posts/${post.postId}`}>More Info</Link>
+                        </Button>
+                    </CardFooter>
+                </Card>
             ))}
         </>
     );

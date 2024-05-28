@@ -32,7 +32,10 @@ export default function newPost() {
     };
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>Create post</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
+
+            <form className="flex justify-center my-5" onSubmit={handleSubmit(onSubmit)}>
                 <Card className="sm:w-[380px]">
                     <CardHeader>
                         <CardTitle>Create Posts</CardTitle>

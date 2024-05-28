@@ -46,32 +46,37 @@ export default function Account() {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Card className="sm:w-[380px]">
-                <CardHeader>
-                    <CardTitle>Update Account</CardTitle>
-                    <CardDescription>Update your account by filling in the details below</CardDescription>
-                </CardHeader>
-                <CardContent className="capitalize">
-                    <Label htmlFor="username">Enter username</Label>
-                    <Input {...register("username")} type="text" id="username" placeholder="Enter your username..." defaultValue={userInfo?.username || ""} />
+        <>
+            <h2>Update account</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
 
-                    <Label htmlFor="email">Your email address</Label>
-                    <Input {...register("email")} type="email" id="email" placeholder="Enter your email..." defaultValue={userInfo?.email || ""} />
+            <form onSubmit={handleSubmit(onSubmit)} className='my-5 flex justify-center'>
+                <Card className="sm:w-[380px]">
+                    <CardHeader>
+                        <CardTitle>Update Account</CardTitle>
+                        <CardDescription>Update your account by filling in the details below</CardDescription>
+                    </CardHeader>
+                    <CardContent className="capitalize">
+                        <Label htmlFor="username">Enter username</Label>
+                        <Input {...register("username")} type="text" id="username" placeholder="Enter your username..." defaultValue={userInfo?.username || ""} />
 
-                    <Label htmlFor="number">Enter phone number</Label>
-                    <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." defaultValue={userInfo?.number || ""} />
+                        <Label htmlFor="email">Your email address</Label>
+                        <Input {...register("email")} type="email" id="email" placeholder="Enter your email..." defaultValue={userInfo?.email || ""} />
 
-                    <Label htmlFor="address">Enter address</Label>
-                    <Input {...register("address")} type="text" id="address" placeholder="Enter your address..." defaultValue={userInfo?.address || ""} />
+                        <Label htmlFor="number">Enter phone number</Label>
+                        <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." defaultValue={userInfo?.number || ""} />
 
-                    <Label htmlFor="state">Enter state</Label>
-                    <Input {...register("state")} type="text" id="state" placeholder="Enter state..." defaultValue={userInfo?.state || ""} />
-                </CardContent>
-                <CardFooter>
-                    <Button className="mt-10" type="submit">Submit</Button>
-                </CardFooter>
-            </Card>
-        </form>
+                        <Label htmlFor="address">Enter address</Label>
+                        <Input {...register("address")} type="text" id="address" placeholder="Enter your address..." defaultValue={userInfo?.address || ""} />
+
+                        <Label htmlFor="state">Enter state</Label>
+                        <Input {...register("state")} type="text" id="state" placeholder="Enter state..." defaultValue={userInfo?.state || ""} />
+                    </CardContent>
+                    <CardFooter>
+                        <Button className="mt-10" type="submit">Submit</Button>
+                    </CardFooter>
+                </Card>
+            </form>
+        </>
     );
 }

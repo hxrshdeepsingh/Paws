@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 
 export default function editPost() {
     const [posts, setPosts] = useState([]);
-    const { toast } = useToast()
     const { push } = useRouter();
 
     useEffect(() => {
@@ -17,7 +18,6 @@ export default function editPost() {
         if (UIS) {
             const userInfo = JSON.parse(UIS);
             const url = `http://localhost:2222/api/posts/userPosts/${userInfo.public_id}`;
-            console.log(url)
 
             async function fetchUserPosts(url) {
                 try {
@@ -49,25 +49,37 @@ export default function editPost() {
 
     return (
         <>
+            <h2>Manage</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
+
             {posts.map((post, index) => (
-                <div key={index}>
-                    <h2>{post.name}</h2>
-                    <p>{post.age}</p>
-                    <p>{post.date}</p>
-                    <p>{post.species}</p>
-                    <p>{post.weight}</p>
-                    <p>{post.gender}</p>
-                    <p>{post.description}</p>
-                    <Button>
-                        <Link href={`/posts/${post.postId}`}>Check</Link>
-                    </Button>
-
-                    <Button variant="secondary">
-                        <Link href={`/posts/edit/${post.postId}`}>Update</Link>
-                    </Button>
-
-                    <Button variant="destructive" onClick={() => deletePost(post.postId)}>Delete</Button>
-                </div>
+                <Card key={index} className="mt-5">
+                    <CardHeader>
+                        <CardTitle>{post.name}</CardTitle>
+                        <CardDescription className="text-gray-700">{post.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row justify-between">
+                        <div className="w-full">
+                            <p>Age: {post.age}</p>
+                            <p>Date: {post.date}</p>
+                            <p>Species: {post.species}</p>
+                        </div>
+                        <div className="w-full">
+                            <p>Weight: {post.weight}</p>
+                            <p>Gender: {post.gender}</p>
+                        </div>
+                    </CardContent>
+                    <Separator />
+                    <CardFooter className="py-2 flex gap-1 flex-wrap">
+                        <Button>
+                            <Link href={`/posts/${post.postId}`}>Check</Link>
+                        </Button>
+                        <Button variant="secondary">
+                            <Link href={`/posts/edit/${post.postId}`}>Update</Link>
+                        </Button>
+                        <Button variant="destructive" onClick={() => deletePost(post.postId)}>Delete</Button>
+                    </CardFooter>
+                </Card>
             ))}
         </>
     );

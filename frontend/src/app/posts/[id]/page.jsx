@@ -1,7 +1,11 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import React, { useState, useEffect } from "react";
+
+import { PersonIcon, EnvelopeOpenIcon } from '@radix-ui/react-icons';
+import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 
 export default function Post({ params }) {
     const [post, setPost] = useState(null);
@@ -20,57 +24,38 @@ export default function Post({ params }) {
     return (
         <>
             {post && (
-                <div key={post.postId}>
-                    <h2>{post.name}</h2>
-                    <p>{post.email}</p>
-                    <p>{post.age}</p>
-                    <p>{post.date}</p>
-                    <p>{post.species}</p>
-                    <p>{post.weight}</p>
-                    <p>{post.vaccinated}</p>
-                    <p>{post.address}</p>
-                    <p>{post.state}</p>
-                    <p>{post.gender}</p>
-                    <p>{post.number}</p>
-                    <p>{post.username}</p>
-                    <p>{post.description}</p>
-                </div>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>{post.name}</CardTitle>
+                        <CardDescription>
+                            <p>Owner Name : {post.username}</p>
+                            <p>{post.description}</p>
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row justify-between">
+                        <div className="w-full">
+                            <p>Age: {post.age}</p>
+                            <p>Date: {post.date}</p>
+                            <p>Species: {post.species}</p>
+                        </div>
+                        <div className="w-full">
+                            <p>Weight: {post.weight}</p>
+                            <p>Vaccinated: {post.vaccinated}</p>
+                            <p>Gender: {post.gender}</p>
+                        </div>
+                    </CardContent>
+                    <Separator />
+                    <CardFooter className="py-2 flex flex-col md:flex-row justify-between">
+                        <div className='w-full'>
+                            <p>{post.email}</p>
+                            <p>{post.number}</p>
+                        </div>
+                        <div className='w-full'>
+                            <p>{post.address} | {post.state}</p>
+                        </div>
+                    </CardFooter>
+                </Card>
             )}
         </>
     );
 }
-
-
-// age
-// : 
-// "0"
-// breed
-// : 
-// "dog"
-// description
-// : 
-// ""
-// email
-// : 
-// "x.gangster.v1@gmail.com"
-// gender
-// : 
-// "male"
-// name
-// : 
-// "zeus"
-// number
-// : 
-// "+91 96809-66795"
-// postId
-// : 
-// "009ff05d-15e0-40fc-89cc-4c4a6141e5ab"
-// userId
-// : 
-// "4bf8933b-ab77-4619-ba40-13bc1cb5cf25"
-// username
-// : 
-// "hxrshdeep singh"
-// __v
-// : 
-// 0
