@@ -25,7 +25,7 @@ export default function Post({ params }) {
         axios.get(`http://localhost:2222/api/posts/${params.id}`)
             .then(response => {
                 setPost(response.data);
-                reset(response.data); // Populate form with fetched data
+                reset(response.data);
             })
             .catch(error => {
                 console.error('Error:', error);

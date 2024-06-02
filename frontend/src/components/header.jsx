@@ -1,9 +1,13 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link';
 import { useState } from 'react';
-import { Slant as Hamburger } from 'hamburger-react'
+
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { CircleUser, Menu, Package2, Search } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,37 +17,125 @@ export default function Header() {
     };
     return (
         <>
-            <nav className='bg-transparent'>
-                <div className="container md:w-[90%] flex flex-wrap items-center justify-between mx-auto py-7">
-                    <Link href="/" className="flex items-center">
-                        {/* <Image src="/assets/logo.webp" width={50} height={50} alt="Flowbite Logo" /> */}
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">adogtion</span>
+            <header className="sticky glass container z-20 md:w-[90%] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+                <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+                    <Link
+                        href="#"
+                        className="flex items-center gap-2 text-lg font-semibold md:text-base"
+                    >
+                        <Package2 className="h-6 w-6" />
+                        <span className="sr-only">Acme Inc</span>
                     </Link>
-                    <button onClick={handleToggle} className="text-gray-900 md:hidden p-0" aria-expanded={isMenuOpen} >
-                        <Hamburger />
-                    </button>
-
-                    <div className={`${isMenuOpen ? '' : 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
-                        <ul className="text-base flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <Link className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary  md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent' href="/posts/new">Create posts</Link>
-                            </li>
-                            <li>
-                                <Link className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary  md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent' href="/posts/edit">Manage posts</Link>
-                            </li>
-                            <li>
-                                <Link href="/posts" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Explore</Link>
-                            </li>
-                            <li>
-                                <Link href="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</Link>
-                            </li>
-                            <li>
-                                <Link href="/account" className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary  md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Account</Link>
-                            </li>
-                        </ul>
-                    </div>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Dashboard
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Orders
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Products
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Customers
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-foreground transition-colors hover:text-foreground"
+                    >
+                        Settings
+                    </Link>
+                </nav>
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            className="shrink-0 md:hidden"
+                        >
+                            <Menu className="h-5 w-5" />
+                            <span className="sr-only">Toggle navigation menu</span>
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <nav className="grid gap-6 text-lg font-medium">
+                            <Link
+                                href="#"
+                                className="flex items-center gap-2 text-lg font-semibold"
+                            >
+                                <Package2 className="h-6 w-6" />
+                                <span className="sr-only">Acme Inc</span>
+                            </Link>
+                            <Link
+                                href="#"
+                                className="text-muted-foreground hover:text-foreground"
+                            >
+                                Dashboard
+                            </Link>
+                            <Link
+                                href="#"
+                                className="text-muted-foreground hover:text-foreground"
+                            >
+                                Orders
+                            </Link>
+                            <Link
+                                href="#"
+                                className="text-muted-foreground hover:text-foreground"
+                            >
+                                Products
+                            </Link>
+                            <Link
+                                href="#"
+                                className="text-muted-foreground hover:text-foreground"
+                            >
+                                Customers
+                            </Link>
+                            <Link href="#" className="hover:text-foreground">
+                                Settings
+                            </Link>
+                        </nav>
+                    </SheetContent>
+                </Sheet>
+                <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+                    <form className="ml-auto flex-1 sm:flex-initial">
+                        <div className="relative">
+                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                            <Input
+                                type="search"
+                                placeholder="Search products..."
+                                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+                            />
+                        </div>
+                    </form>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="secondary" size="icon" className="rounded-full">
+                                <CircleUser className="h-5 w-5" />
+                                <span className="sr-only">Toggle user menu</span>
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Settings</DropdownMenuItem>
+                            <DropdownMenuItem>Support</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Logout</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
-            </nav>
+            </header>
         </>
     )
 }

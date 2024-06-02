@@ -6,13 +6,13 @@ import Link from "next/link"
 export default function Footer() {
     return (
         <>
-            <footer className="bg-gray-950 text-white">
+            <footer className="bg-secondary rounded-t-2xl">
                 <div className="container md:w-[90%]">
                     <div className="py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                         <div className="w-full text-center md:text-start">
                             <h2 className="text-xl font-semibold mb-10 capitalize">Paws & people</h2>
                             <p>tel:+91 3789-3828</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing<br /> elit. Accusamus, reprehenderit?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reprehenderit?</p>
                         </div>
                         <div className="w-full">
                             <h2 className="text-xl font-semibold mb-10 text-center">Links</h2>
@@ -33,7 +33,7 @@ export default function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <div className="flex justify-center py-3 text-center border-t-2 border-dotted border-gray-700">
+                    <div className="flex justify-center py-3 text-center">
                         <h6>© Cambridge University Press & Assessment 2024</h6>
                     </div>
                 </div>

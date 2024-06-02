@@ -16,7 +16,6 @@ export default function newPost() {
     const { toast } = useToast()
     const { push } = useRouter();
     const { register, handleSubmit, setValue } = useForm();
-
     async function onSubmit(data) {
         try {
             const response = await postRequest("http://localhost:2222/api/posts/create", data);

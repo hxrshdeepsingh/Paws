@@ -33,6 +33,7 @@ export default function login() {
             launchToast("", "Account created succesfully!", "Wait for redirection");
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             localStorage.setItem("userApi", JSON.stringify(response.data.user));
+            isAuthenticated = true
             setTimeout(() => {
                 push('/posts');
             }, 1000)

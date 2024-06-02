@@ -3,7 +3,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 
-import { PersonIcon, EnvelopeOpenIcon } from '@radix-ui/react-icons';
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 

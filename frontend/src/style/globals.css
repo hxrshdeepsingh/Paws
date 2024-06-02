@@ -4,58 +4,28 @@
 
 @layer base {
   :root {
-    --background: 60, 80%, 98%;
-    --foreground: 65, 74%, 6%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 62, 76%, 54%;
-    --primary-foreground: 3 3% 3%;
-    --secondary: 84, 77%, 73%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 99, 77%, 63%;
-    --accent-foreground: 24 9.8% 10%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 24.6 95% 53.1%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
   }
-}
 
-@layer base {
-  .linearPrimarySecondary { background: linear-gradient(#dce32e, #c5ef85); }
-  .linearPrimaryAccent { background: linear-gradient(#dce32e, #8be959); }
-  .linearSecondaryAccent { background: linear-gradient(#c5ef85, #8be959); }
-  .radialPrimarySecondary { background: radial-gradient(#dce32e, #c5ef85); }
-  .radialPrimaryAccent { background: radial-gradient(#dce32e, #8be959); }
-  .radialSecondaryAccent { background: radial-gradient(#c5ef85, #8be959); }
-}
-
-@layer components {
-  .text-xs { font-size: 0.75rem; } 
-  .text-sm { font-size: 0.875rem; } 
-  .text-base { font-size: 1rem; } 
-  .text-lg { font-size: 1.125rem; } 
-  .text-xl { font-size: 1.25rem; } 
-  .text-2xl { font-size: 1.5rem; } 
-  .text-3xl { font-size: 1.875rem; } 
-  .text-4xl { font-size: 2.25rem; } 
-  .text-5xl { font-size: 3rem; } 
-  .text-6xl { font-size: 4rem; } 
-}
-
-@layer components {
-  .leading-none { line-height: 1; } 
-  .leading-tight { line-height: 1.25; } 
-  .leading-snug { line-height: 1.375; } 
-  .leading-normal { line-height: 1.5; } 
-  .leading-relaxed { line-height: 1.625; } 
-  .leading-loose { line-height: 2; } 
 }
 
 @layer base {
@@ -65,14 +35,14 @@
 
   body {
     @apply bg-background text-foreground;
-    font-size:0.9rem;
   }
 }
 
-h2{
-  font-size:2rem;
-  font-weight: bold;
-}
-h3{
-  font-size:1.2rem;
+.glass {
+  background: rgba(255, 255, 255, 0.34);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
