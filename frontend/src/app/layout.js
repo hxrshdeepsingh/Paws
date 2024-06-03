@@ -24,10 +24,10 @@ export default function RootLayout({ children }) {
         <meta property="og:description" content={metadata.description} />
         <meta
           property="og:image"
-          content="https://paws-xi.vercel.app/assets/dog.png"
+          content="https://paws-xi.vercel.app/assets/logo-transparent.png"
         />
         <meta property="og:url" content="https://paws-xi.vercel.app" />
-        <link rel="icon" href="/assets/dog.png" />
+        <link rel="icon" href="/assets/logo-transparent.png" />
       </head>
       <body className={inter.className}>
         <Header />

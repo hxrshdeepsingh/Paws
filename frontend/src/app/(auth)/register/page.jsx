@@ -1,22 +1,15 @@
 "use client"
 
+import Cookies from 'js-cookie';
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-
-import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
 import { postRequest } from "../../../lib/api"
 import { useRouter } from 'next/navigation';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card";
 
 export default function register() {
     const { toast } = useToast()
@@ -62,22 +55,22 @@ export default function register() {
                         </CardHeader>
                         <CardContent className="capitalize">
 
-                            <Label htmlFor="username">Enter username</Label>
+                            <Label htmlFor="username">Username</Label>
                             <Input {...register("username")} type="username" id="username" placeholder="Enter your username..." />
 
-                            <Label htmlFor="email">Your email address</Label>
+                            <Label htmlFor="email">Email</Label>
                             <Input {...register("email")} type="text" id="email" placeholder="Enter your email..." />
 
-                            <Label htmlFor="password">Enter password</Label>
+                            <Label htmlFor="password">Password</Label>
                             <Input {...register("password")} type="password" id="password" placeholder="Enter your password..." />
 
-                            <Label htmlFor="number">Enter phone number</Label>
+                            <Label htmlFor="number">Phone-number</Label>
                             <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." />
 
-                            <Label htmlFor="address">Enter address</Label>
+                            <Label htmlFor="address">Address</Label>
                             <Input {...register("address")} type="text" id="address" placeholder="Enter your address..." />
 
-                            <Label htmlFor="state">Enter state</Label>
+                            <Label htmlFor="state">State</Label>
                             <Input {...register("state")} type="text" id="state" placeholder="Enter state..." />
 
                         </CardContent>

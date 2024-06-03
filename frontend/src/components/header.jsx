@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import useLinks from "../hooks/useLinks";
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -10,6 +11,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
+    const links = useLinks();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleToggle = () => {
@@ -27,13 +29,13 @@ export default function Header() {
                         <span className="sr-only">Acme Inc</span>
                     </Link>
                     <Link
-                        href="#"
+                        href={links.HOME}
                         className="text-muted-foreground transition-colors hover:text-foreground"
                     >
                         Dashboard
                     </Link>
                     <Link
-                        href="#"
+                        href={links.DASHBOARD}
                         className="text-muted-foreground transition-colors hover:text-foreground"
                     >
                         Orders
