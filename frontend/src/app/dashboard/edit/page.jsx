@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
@@ -12,6 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 export default function editPost() {
     const [posts, setPosts] = useState([]);
     const { push } = useRouter();
+    const links = useLinks();
 
     useEffect(() => {
         const UIS = localStorage.getItem("userApi");
@@ -69,10 +71,10 @@ export default function editPost() {
                     <Separator />
                     <CardFooter className="py-2 flex gap-1 flex-wrap">
                         <Button>
-                            <Link href={`/posts/${post.postId}`}>Check</Link>
+                            <Link href={`${links.EXPLORE}/${post.postId}`}>Check</Link>
                         </Button>
                         <Button variant="secondary">
-                            <Link href={`/dashboard/edit/${post.postId}`}>Update</Link>
+                            <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
                         </Button>
                         <Button variant="destructive" onClick={() => deletePost(post.postId)}>Delete</Button>
                     </CardFooter>
