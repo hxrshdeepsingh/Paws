@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import useLinks from "@/hooks/useLinks";
 
 import { useEffect, useState } from "react";
 import { getRequest } from "../../lib/api";
@@ -11,6 +12,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 
 
 export default function Posts() {
+    const links = useLinks();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -54,7 +56,7 @@ export default function Posts() {
 
                     <CardFooter className="py-2">
                         <Button variant="secondary">
-                            <Link href={`/posts/${post.postId}`}>More Info</Link>
+                            <Link href={`${links.EXPLORE}/${post.postId}`}>More Info</Link>
                         </Button>
                     </CardFooter>
                 </Card>

@@ -49,11 +49,8 @@ export default function editPost() {
 
     return (
         <>
-            <h2>Manage</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
-
             {posts.map((post, index) => (
-                <Card key={index} className="mt-5">
+                <Card key={index}>
                     <CardHeader>
                         <CardTitle>{post.name}</CardTitle>
                         <CardDescription className="text-gray-700">{post.description}</CardDescription>
@@ -75,7 +72,7 @@ export default function editPost() {
                             <Link href={`/posts/${post.postId}`}>Check</Link>
                         </Button>
                         <Button variant="secondary">
-                            <Link href={`/posts/edit/${post.postId}`}>Update</Link>
+                            <Link href={`/dashboard/edit/${post.postId}`}>Update</Link>
                         </Button>
                         <Button variant="destructive" onClick={() => deletePost(post.postId)}>Delete</Button>
                     </CardFooter>

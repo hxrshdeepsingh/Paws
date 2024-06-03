@@ -4,8 +4,10 @@ import { useMemo } from 'react';
 const useLinks = () => {
     return useMemo(() => ({
         HOME: '/',
-        POSTS: '/posts',
+        EXPLORE: '/explore',
         DASHBOARD: '/dashboard',
+        POST_CREATE: '/dashboard/create',
+        POST_MANAGE: '/dashboard/edit',
     }), []);
 };
 

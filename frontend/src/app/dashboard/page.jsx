@@ -47,11 +47,8 @@ export default function Account() {
 
     return (
         <>
-            <h2>Update account</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
-
-            <form onSubmit={handleSubmit(onSubmit)} className='my-5 flex justify-center'>
-                <Card className="sm:w-[380px]">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Card>
                     <CardHeader>
                         <CardTitle>Update Account</CardTitle>
                         <CardDescription>Update your account by filling in the details below</CardDescription>

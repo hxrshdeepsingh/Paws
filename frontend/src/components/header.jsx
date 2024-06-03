@@ -28,35 +28,30 @@ export default function Header() {
                         <Package2 className="h-6 w-6" />
                         <span className="sr-only">Acme Inc</span>
                     </Link>
+                    <Link href={links.HOME} className="text-muted-foreground transition-colors hover:text-foreground">Home</Link>
                     <Link
-                        href={links.HOME}
+                        href={links.EXPLORE}
                         className="text-muted-foreground transition-colors hover:text-foreground"
                     >
-                        Dashboard
+                        Explore
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        href="#"
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Contact
                     </Link>
                     <Link
                         href={links.DASHBOARD}
                         className="text-muted-foreground transition-colors hover:text-foreground"
                     >
-                        Orders
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                        Products
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                        Customers
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-foreground transition-colors hover:text-foreground"
-                    >
-                        Settings
+                        Dashboard
                     </Link>
                 </nav>
                 <Sheet>

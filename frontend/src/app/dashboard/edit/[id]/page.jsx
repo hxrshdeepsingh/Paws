@@ -54,7 +54,7 @@ export default function Post({ params }) {
         <>
             {post && (
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Card className="sm:w-[380px]">
+                    <Card>
                         <CardHeader>
                             <CardTitle>Update Post</CardTitle>
                             <CardDescription>Update your post to share new ideas, stories, or questions with our community.</CardDescription>
