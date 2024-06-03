@@ -4,7 +4,6 @@ import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
-import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -12,7 +11,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 
 export default function editPost() {
     const [posts, setPosts] = useState([]);
-    const { push } = useRouter();
     const links = useLinks();
 
     useEffect(() => {
@@ -39,9 +37,6 @@ export default function editPost() {
             const response = await deleteRequest(url);
             if (response) {
                 toast({ variant: "default", title: "Post deleted successfully", description: "Wait for redirection!" })
-                setTimeout(() => {
-                    push("/posts/edit")
-                }, 1000)
             }
 
         } catch (error) {

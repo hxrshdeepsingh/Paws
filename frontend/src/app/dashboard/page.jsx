@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form';
 import { putRequest } from "../../lib/api";
-import { useRouter } from 'next/navigation';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +13,6 @@ import { useEffect, useState } from 'react';
 export default function Account() {
     const { toast } = useToast();
     const { register, handleSubmit, setValue } = useForm();
-    const { push } = useRouter();
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
@@ -36,9 +34,6 @@ export default function Account() {
             if (response) {
                 localStorage.setItem("userInfo", JSON.stringify(data));
                 toast({ variant: "default", title: "Updated Successfully", description: "✌" });
-                setTimeout(() => {
-                    push('/posts');
-                }, 1000);
             }
         } catch (error) {
             toast({ variant: "destructive", title: "Error occurred", description: "Try Again!!!" });

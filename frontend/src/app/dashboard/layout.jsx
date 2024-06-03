@@ -1,8 +1,26 @@
+'use client'
+
 import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
+import { refresh } from "@/lib/refresh";
+
+import { logout } from "@/lib/logout";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Layout({ children }) {
     const Links = useLinks();
+    const { toast } = useToast();
+
+    function checkLogout() {
+        const status = logout();
+        if (status) {
+            toast({ variant: "default", title: "Logout successfully!", description: "Wait for redirection" });
+            setTimeout(() => {
+                refresh("/explore")
+            }, 1000)
+        }
+    }
     return (
         <>
             <div className="flex min-h-screen w-full flex-col">
@@ -15,7 +33,7 @@ export default function Layout({ children }) {
                             <Link href={Links.DASHBOARD}>Profile</Link>
                             <Link href={Links.POST_CREATE}>Create</Link>
                             <Link href={Links.POST_MANAGE}>Manage</Link>
-                            <Link href="#">Logout</Link>
+                            <Button variant="destructive" onClick={checkLogout}>Logout</Button>
                         </nav>
                         <div className="grid gap-6">
                             {children}

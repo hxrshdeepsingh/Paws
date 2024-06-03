@@ -11,14 +11,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { putRequest } from "../../../../lib/api";
-import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast";
 import { useForm } from 'react-hook-form';
 
 export default function Post({ params }) {
     const [post, setPost] = useState(null);
     const { toast } = useToast();
-    const { push } = useRouter();
     const { register, handleSubmit, setValue, reset } = useForm();
 
     useEffect(() => {
@@ -41,9 +39,6 @@ export default function Post({ params }) {
             const response = await putRequest("http://localhost:2222/api/posts/update", reqData);
             if (response) {
                 toast({ variant: "default", title: "Post updated successfully!", description: "Wait for redirection" });
-                setTimeout(() => {
-                    push('/posts/edit');
-                }, 1000);
             }
         } catch (error) {
             toast({ variant: "destructive", title: "Error occurred", description: "Try again!!!" });
