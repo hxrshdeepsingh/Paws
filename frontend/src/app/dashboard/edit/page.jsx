@@ -4,7 +4,6 @@ import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
-import ProtectedRoute from '@/components/protectedRoute';
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -80,4 +79,4 @@ function editPost() {
     );
 }
 
-export default ProtectedRoute(editPost)
+export default editPost;

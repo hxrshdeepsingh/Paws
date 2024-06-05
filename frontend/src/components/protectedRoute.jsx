@@ -1,16 +1,18 @@
 // components/ProtectedRoute.js
 
 import useAuth from '../hooks/useAuth';
+import Loading from './loading';
 
 const ProtectedRoute = (WrappedComponent) => {
   return (props) => {
     const isAuthenticated = useAuth();
 
     if (!isAuthenticated) {
-      return <p>Loading...</p>;
+      return <Loading/>;
     }
-
-    return <WrappedComponent {...props} />;
+    else{
+      return <WrappedComponent {...props} />;
+    }
   };
 };
 

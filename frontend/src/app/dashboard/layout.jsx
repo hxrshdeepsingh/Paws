@@ -8,7 +8,9 @@ import { logout } from "@/lib/logout";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-export default function Layout({ children }) {
+import ProtectedRoute from '@/components/protectedRoute';
+
+function Layout({ children }) {
     const Links = useLinks();
     const { toast } = useToast();
 
@@ -44,3 +46,5 @@ export default function Layout({ children }) {
         </>
     )
 }
+
+export default ProtectedRoute(Layout)

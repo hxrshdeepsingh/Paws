@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import ProtectedRoute from '@/components/protectedRoute';
 
 import { postRequest } from "../../../lib/api"
 import { useRouter } from 'next/navigation';
@@ -89,4 +88,4 @@ function newPost() {
   );
 }
 
-export default ProtectedRoute(newPost);
+export default newPost;

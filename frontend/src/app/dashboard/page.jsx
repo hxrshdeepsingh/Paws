@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form';
 import { putRequest } from "../../lib/api";
-import ProtectedRoute from '@/components/protectedRoute';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -74,4 +73,4 @@ function Account() {
     );
 }
 
-export default ProtectedRoute(Account)
+export default Account;

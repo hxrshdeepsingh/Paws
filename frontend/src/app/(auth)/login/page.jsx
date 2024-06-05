@@ -45,7 +45,7 @@ export default function login() {
     };
     return (
         <>
-            <div className="container py-5 flex justify-center">
+            <div className="container min-h-screen py-5 flex justify-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Card className="sm:w-[380px]">
                         <CardHeader>
