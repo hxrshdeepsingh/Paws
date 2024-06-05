@@ -79,7 +79,9 @@ export default function Home() {
 				<div className="my-5">
 					<div className="py-3 flex flex-col-reverse md:flex-row justify-between items-center gap-5">
 						<div className="w-full ">
-							<h2>Landing page title</h2>
+							<h2 className="text-4xl font-semibold mb-3">
+								Landing page title
+							</h2>
 							<h3>And a subheading describing your site, too</h3>
 							<Button className="w-fit mt-5">Explore</Button>
 						</div>
@@ -101,7 +103,9 @@ export default function Home() {
 							/>
 						</div>
 						<div className="w-full">
-							<h2>Landing page title</h2>
+							<h2 className="text-4xl font-semibold mb-3">
+								Landing page title
+							</h2>
 							<h3>And a subheading describing your site, too</h3>
 							<Button className="w-fit mt-5">Explore</Button>
 						</div>

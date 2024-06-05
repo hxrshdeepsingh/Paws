@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { putRequest } from "../../lib/api";
+import ProtectedRoute from '@/components/protectedRoute';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from 'react';
 
-export default function Account() {
+function Account() {
     const { toast } = useToast();
     const { register, handleSubmit, setValue } = useForm();
     const [userInfo, setUserInfo] = useState(null);
@@ -72,3 +73,5 @@ export default function Account() {
         </>
     );
 }
+
+export default ProtectedRoute(Account)

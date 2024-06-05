@@ -4,7 +4,7 @@ import Footer from '../components/footer'
 
 import ProgressProvider from '@/components/progress'
 import { Toaster } from '@/components/ui/toaster'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
@@ -32,7 +32,10 @@ export default function RootLayout({ children }) {
 			</head>
 			<body className={inter.className}>
 				<Header />
-				<ProgressProvider>{children}<SpeedInsights /></ProgressProvider>
+				<ProgressProvider>
+					{children}
+					<SpeedInsights />
+				</ProgressProvider>
 				<Footer />
 				<Toaster />
 			</body>

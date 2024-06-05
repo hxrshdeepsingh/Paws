@@ -6,13 +6,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import ProtectedRoute from '@/components/protectedRoute';
 
 import { postRequest } from "../../../lib/api"
 import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast"
 import { useForm } from 'react-hook-form';
 
-export default function newPost() {
+function newPost() {
   const { toast } = useToast()
   const { push } = useRouter();
   const { register, handleSubmit, setValue } = useForm();
@@ -87,3 +88,5 @@ export default function newPost() {
     </>
   );
 }
+
+export default ProtectedRoute(newPost);

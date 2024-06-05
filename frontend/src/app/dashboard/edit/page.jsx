@@ -4,12 +4,13 @@ import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
+import ProtectedRoute from '@/components/protectedRoute';
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 
-export default function editPost() {
+function editPost() {
     const [posts, setPosts] = useState([]);
     const links = useLinks();
 
@@ -78,3 +79,5 @@ export default function editPost() {
         </>
     );
 }
+
+export default ProtectedRoute(editPost)
