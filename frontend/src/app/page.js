@@ -3,9 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { DollarSign, Users, CreditCard, Activity } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { motion } from 'framer-motion'
 
-import data from "../config/data.json"
+import data from '../config/home/hero.json'
 
 export default function Home() {
 	return (
@@ -13,7 +12,7 @@ export default function Home() {
 			<div className="container md:w-[90%]">
 				<div className=" h-[50vh] flex flex-col justify-center">
 					<div className="w-full text-center">
-						<h2>{data.hero.title}</h2>
+						<h2 className="text-4xl font-semibold mb-3">{data.hero.title}</h2>
 						<h3>{data.hero.description}</h3>
 						<Button className="w-fit mt-5">Explore</Button>
 					</div>
