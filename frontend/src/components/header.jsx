@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link';
 import { useState } from 'react';
 import useLinks from "../hooks/useLinks";
+import NavLink from './ui/navLink';
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -21,38 +21,24 @@ export default function Header() {
         <>
             <header className="sticky z-1 container md:w-[90%] top-0 flex h-16 items-center gap-4 bg-background px-4 md:px-6">
                 <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-                    <Link
-                        href="#"
-                        className="flex items-center gap-2 text-lg font-semibold md:text-base"
-                    >
+                    <NavLink href="#" className="flex items-center gap-2 text-lg font-semibold md:text-base">
                         <Package2 className="h-6 w-6" />
-                        <span className="sr-only">Acme Inc</span>
-                    </Link>
-                    <Link href={links.HOME} className="text-muted-foreground transition-colors hover:text-foreground">Home</Link>
-                    <Link
-                        href={links.EXPLORE}
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
+                    </NavLink>
+                    <NavLink href={links.HOME} className="text-muted-foreground transition-colors hover:text-foreground">
+                        Home
+                    </NavLink>
+                    <NavLink href={links.EXPLORE} className="text-muted-foreground transition-colors hover:text-foreground">
                         Explore
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
+                    </NavLink>
+                    <NavLink href="#" className="text-muted-foreground transition-colors hover:text-foreground">
                         About
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
+                    </NavLink>
+                    <NavLink href="#" className="text-muted-foreground transition-colors hover:text-foreground">
                         Contact
-                    </Link>
-                    <Link
-                        href={links.DASHBOARD}
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                    >
+                    </NavLink>
+                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
                         Dashboard
-                    </Link>
+                    </NavLink>
                 </nav>
                 <Sheet>
                     <SheetTrigger asChild>
@@ -67,40 +53,24 @@ export default function Header() {
                     </SheetTrigger>
                     <SheetContent side="left">
                         <nav className="grid gap-6 text-lg font-medium">
-                            <Link
-                                href="#"
-                                className="flex items-center gap-2 text-lg font-semibold"
-                            >
+                            <NavLink href="#" className="flex items-center gap-2 text-lg font-semibold">
                                 <Package2 className="h-6 w-6" />
-                                <span className="sr-only">Acme Inc</span>
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
+                            </NavLink>
+                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
                                 Dashboard
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
+                            </NavLink>
+                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
                                 Orders
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
+                            </NavLink>
+                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
                                 Products
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
+                            </NavLink>
+                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
                                 Customers
-                            </Link>
-                            <Link href="#" className="hover:text-foreground">
+                            </NavLink>
+                            <NavLink href="#" className="hover:text-foreground">
                                 Settings
-                            </Link>
+                            </NavLink>
                         </nav>
                     </SheetContent>
                 </Sheet>

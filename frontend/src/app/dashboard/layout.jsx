@@ -1,12 +1,13 @@
 'use client'
 
-import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
+import NavLink from "@/components/ui/navLink";
 import { refresh } from "@/lib/refresh";
 
 import { logout } from "@/lib/logout";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { Separator } from "@/components/ui/separator";
 
 import ProtectedRoute from '@/components/protectedRoute';
 
@@ -29,13 +30,15 @@ function Layout({ children }) {
                 <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4  p-4 md:gap-8 md:p-10">
                     <div className="mx-auto grid w-full max-w-6xl gap-2">
                         <h1 className="text-3xl font-semibold">Settings</h1>
+                        <h3 className="text-muted-foreground">Manage your account settings and set e-mail preferences.</h3>
+                        <Separator className="mt-4" />
                     </div>
                     <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
                         <nav className="grid gap-4 text-sm text-muted-foreground" x-chunk="dashboard-04-chunk-0">
-                            <Link href={Links.DASHBOARD}>Profile</Link>
-                            <Link href={Links.POST_CREATE}>Create</Link>
-                            <Link href={Links.POST_MANAGE}>Manage</Link>
-                            <Button variant="" onClick={checkLogout}>Logout</Button>
+                            <NavLink href={Links.DASHBOARD}>Profile</NavLink>
+                            <NavLink href={Links.POST_CREATE}>Create</NavLink>
+                            <NavLink href={Links.POST_MANAGE}>Manage</NavLink>
+                            <Button className="p-0 w-fit text-destructive" variant="link" onClick={checkLogout}>Logout</Button>
                         </nav>
                         <div className="grid gap-6">
                             {children}

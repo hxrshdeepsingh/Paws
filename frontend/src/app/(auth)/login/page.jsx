@@ -30,15 +30,15 @@ export default function login() {
             const response = await postRequest("http://localhost:2222/api/account/signin", data);
             const token = response.data.token;
             Cookies.set('pjwt', token, { expires: 7 });
-            launchToast("", "Account created succesfully!", "Wait for redirection");
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             localStorage.setItem("userApi", JSON.stringify(response.data.user));
-            isAuthenticated = true
+            launchToast("", "Account created succesfully!", "Wait for redirection");
             setTimeout(() => {
-                push('/posts');
+                push('/explore');
             }, 1000)
 
         } catch (error) {
+            console.log(error)
             const errorMessage = error.response?.data?.message || "Please try again";
             launchToast("destructive", "Error occurred", errorMessage);
         }

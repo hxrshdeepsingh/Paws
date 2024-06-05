@@ -4,12 +4,14 @@ import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
-
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
+import { MoreHorizontal } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
 
-function editPost() {
+export default function editPost() {
     const [posts, setPosts] = useState([]);
     const links = useLinks();
 
@@ -46,37 +48,78 @@ function editPost() {
 
     return (
         <>
-            {posts.map((post, index) => (
-                <Card key={index}>
-                    <CardHeader>
-                        <CardTitle>{post.name}</CardTitle>
-                        <CardDescription className="text-gray-700">{post.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex flex-col md:flex-row justify-between">
-                        <div className="w-full">
-                            <p>Age: {post.age}</p>
-                            <p>Date: {post.date}</p>
-                            <p>Species: {post.species}</p>
-                        </div>
-                        <div className="w-full">
-                            <p>Weight: {post.weight}</p>
-                            <p>Gender: {post.gender}</p>
-                        </div>
-                    </CardContent>
-                    <Separator />
-                    <CardFooter className="py-2 flex gap-1 flex-wrap">
-                        <Button>
-                            <Link href={`${links.EXPLORE}/${post.postId}`}>Check</Link>
-                        </Button>
-                        <Button variant="secondary">
-                            <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
-                        </Button>
-                        <Button variant="destructive" onClick={() => deletePost(post.postId)}>Delete</Button>
-                    </CardFooter>
-                </Card>
-            ))}
+            <Card>
+                <CardHeader>
+                    <CardTitle>Manage Posts</CardTitle>
+                    <CardDescription>
+                        Manage your products and view their sales performance.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Age</TableHead>
+                                <TableHead>Gender</TableHead>
+                                <TableHead className="hidden md:table-cell">
+                                    Created at
+                                </TableHead>
+                                <TableHead className="hidden md:table-cell">Actions</TableHead>
+                                <TableHead>
+                                    <span className="sr-only">Actions</span>
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+
+                            {posts.map((post, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium">
+                                        {post.name}
+                                    </TableCell>
+                                    <TableCell>
+                                        <Badge variant="outline">{post.age}</Badge>
+                                    </TableCell>
+                                    <TableCell>{post.gender}</TableCell>
+                                    <TableCell className="hidden md:table-cell">
+                                        {post.date}
+                                    </TableCell>
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button aria-haspopup="true" size="icon" variant="ghost">
+                                                    <MoreHorizontal className="h-4 w-4" />
+                                                    <span className="sr-only">Toggle menu</span>
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end">
+                                                <DropdownMenuItem>
+                                                    <Link href={`${links.EXPLORE}/${post.postId}`}>
+                                                        Check
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem onClick={() => deletePost(post.postId)}>
+                                                    delete
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+
+                        </TableBody>
+                    </Table>
+                </CardContent>
+                <CardFooter>
+                    <div className="text-xs text-muted-foreground">
+                        all posts
+                    </div>
+                </CardFooter>
+            </Card>
         </>
     );
 }
-
-export default editPost;

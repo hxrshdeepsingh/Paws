@@ -94,3 +94,8 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+a{
+  height: 100%;
+  width: 100%;
+}
