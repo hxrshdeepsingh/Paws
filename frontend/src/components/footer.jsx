@@ -2,6 +2,7 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 
 import Link from "next/link"
+import data from "@/config/footer.json"
 
 export default function Footer() {
     return (
@@ -10,9 +11,9 @@ export default function Footer() {
                 <div className="container md:w-[90%]">
                     <div className="py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                         <div className="w-full text-center md:text-start">
-                            <h2 className="text-xl font-semibold mb-10 capitalize">Paws & people</h2>
-                            <p>tel:+91 3789-3828</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reprehenderit?</p>
+                            <h2 className="text-xl font-semibold mb-10 capitalize">{data.section1.title}</h2>
+                            <p>{data.section1.phone}</p>
+                            <p>{data.section1.description}</p>
                         </div>
                         <div className="w-full">
                             <h2 className="text-xl font-semibold mb-10 text-center">Links</h2>
@@ -24,8 +25,8 @@ export default function Footer() {
                         </div>
                         <div className="text-center w-full">
                             <ul>
-                                <h3 className="text-xl mb-10 font-semibold">Join# Adoption</h3>
-                                <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, eligendi!</p>
+                                <h3 className="text-xl mb-10 font-semibold">{data.section3.title}</h3>
+                                <p className="text-sm">{data.section3.description}</p>
                                 <div className="flex flex-col w-full items-center space-y-3 mt-5">
                                     <Input className="w-4/5" type="email" placeholder="Email" />
                                     <Button className="w-4/5" variant="default" type="submit">Subscribe</Button>
@@ -34,7 +35,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="flex justify-center py-3 text-center">
-                        <h6>© Cambridge University Press & Assessment 2024</h6>
+                        <h6>{data.copyright}</h6>
                     </div>
                 </div>
             </footer>

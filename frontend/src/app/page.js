@@ -5,14 +5,16 @@ import { DollarSign, Users, CreditCard, Activity } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { motion } from 'framer-motion'
 
+import data from "../config/data.json"
+
 export default function Home() {
 	return (
 		<>
 			<div className="container md:w-[90%]">
 				<div className=" h-[50vh] flex flex-col justify-center">
 					<div className="w-full text-center">
-						<h2>Landing page title</h2>
-						<h3>And a subheading describing your site, too</h3>
+						<h2>{data.hero.title}</h2>
+						<h3>{data.hero.description}</h3>
 						<Button className="w-fit mt-5">Explore</Button>
 					</div>
 				</div>
