@@ -33,7 +33,7 @@ export default function Layout({ children }) {
                             <Link href={Links.DASHBOARD}>Profile</Link>
                             <Link href={Links.POST_CREATE}>Create</Link>
                             <Link href={Links.POST_MANAGE}>Manage</Link>
-                            <Button variant="destructive" onClick={checkLogout}>Logout</Button>
+                            <Button variant="" onClick={checkLogout}>Logout</Button>
                         </nav>
                         <div className="grid gap-6">
                             {children}

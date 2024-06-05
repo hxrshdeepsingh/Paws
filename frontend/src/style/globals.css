@@ -78,6 +78,7 @@
 
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 }
 
@@ -88,21 +89,8 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+body::-webkit-scrollbar {
+  display: none;
 }
