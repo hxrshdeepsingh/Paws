@@ -4,6 +4,7 @@ import Link from "next/link";
 import useLinks from "@/hooks/useLinks";
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
+import { useToast } from "@/components/ui/use-toast"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 import { MoreHorizontal } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -14,12 +15,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "
 export default function editPost() {
     const [posts, setPosts] = useState([]);
     const links = useLinks();
+    const { toast } = useToast()
 
     useEffect(() => {
         const UIS = localStorage.getItem("userApi");
         if (UIS) {
             const userInfo = JSON.parse(UIS);
-            const url = `http://localhost:2222/api/posts/userPosts/${userInfo.public_id}`;
+            const url = `${process.env.NEXT_PUBLIC_API_BASE}/api/posts/userPosts/${userInfo.public_id}`;
 
             async function fetchUserPosts(url) {
                 try {
@@ -35,7 +37,7 @@ export default function editPost() {
 
     async function deletePost(id) {
         try {
-            const url = `http://localhost:2222/api/posts/delete/${id}`;
+            const url = `${process.env.NEXT_PUBLIC_API_BASE}/api/posts/delete/${id}`;
             const response = await deleteRequest(url);
             if (response) {
                 toast({ variant: "default", title: "Post deleted successfully", description: "Wait for redirection!" })

@@ -18,7 +18,7 @@ export default function Posts() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getRequest("http://localhost:2222/api/posts/all");
+                const response = await getRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/posts/all`);
                 setPosts(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);

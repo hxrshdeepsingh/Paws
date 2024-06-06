@@ -10,7 +10,7 @@ export default function Post({ params }) {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:2222/api/posts/${params.id}`)
+        axios.get(`${process.env.NEXT_PUBLIC_API_BASE}/api/posts/${params.id}`)
             .then(response => {
                 setPost(response.data);
             })

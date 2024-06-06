@@ -20,7 +20,7 @@ export default function Post({ params }) {
     const { register, handleSubmit, setValue, reset } = useForm();
 
     useEffect(() => {
-        axios.get(`http://localhost:2222/api/posts/${params.id}`)
+        axios.get(`${process.env.NEXT_PUBLIC_API_BASE}/api/posts/${params.id}`)
             .then(response => {
                 setPost(response.data);
                 reset(response.data);
@@ -36,7 +36,7 @@ export default function Post({ params }) {
                 "data": data,
                 "postId": params.id
             }
-            const response = await putRequest("http://localhost:2222/api/posts/update", reqData);
+            const response = await putRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/posts/update`, reqData);
             if (response) {
                 toast({ variant: "default", title: "Post updated successfully!", description: "Wait for redirection" });
             }

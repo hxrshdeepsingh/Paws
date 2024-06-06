@@ -18,7 +18,7 @@ function newPost() {
   const { register, handleSubmit, setValue } = useForm();
   async function onSubmit(data) {
     try {
-      const response = await postRequest("http://localhost:2222/api/posts/create", data);
+      const response = await postRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/posts/create`, data);
       if (response) {
         toast({ variant: "default", title: "Post created succesfully!", description: "Wait for redirection" });
         setTimeout(() => {

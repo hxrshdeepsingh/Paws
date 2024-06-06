@@ -30,7 +30,7 @@ function Account() {
 
     async function onSubmit(data) {
         try {
-            const response = await putRequest("http://localhost:2222/api/account/update", data);
+            const response = await putRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/account/update`, data);
             if (response) {
                 localStorage.setItem("userInfo", JSON.stringify(data));
                 toast({ variant: "default", title: "Updated Successfully", description: "✌" });
