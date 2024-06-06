@@ -3,12 +3,13 @@ const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
 const cors = require('cors')
-app.use(
-	cors({
-		origin: ['http://localhost:3000', 'https://paws-xi.vercel.app/'],
-		credentials: true,
-	}),
-)
+// app.use(
+// 	cors({
+// 		origin: ['http://localhost:3000', 'https://paws-xi.vercel.app/'],
+// 		credentials: true,
+// 	}),
+// )
+app.use(cors({ credentials: true }));
 
 const userRoute = require('./src/routes/userRouter')
 const postRoute = require('./src/routes/postRouter')
