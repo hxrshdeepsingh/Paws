@@ -26,7 +26,7 @@ export default function register() {
 
     async function onSubmit(data) {
         try {
-            const response = await postRequest("http://localhost:2222/api/account/signup", data);
+            const response = await postRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/account/signup`, data);
             const token = response.data.token;
             if (token) {
                 Cookies.set('pjwt', token, { expires: 7 });

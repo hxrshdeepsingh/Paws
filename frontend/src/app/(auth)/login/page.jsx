@@ -27,7 +27,7 @@ export default function login() {
 
     async function onSubmit(data) {
         try {
-            const response = await postRequest("http://localhost:2222/api/account/signin", data);
+            const response = await postRequest(`${process.env.NEXT_PUBLIC_API_BASE}/api/account/signin`, data);
             const token = response.data.token;
             Cookies.set('pjwt', token, { expires: 7 });
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
