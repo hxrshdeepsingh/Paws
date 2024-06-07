@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
+import Dashboard from "@/config/dashboard.json";
+
 import { postRequest } from "../../../lib/api"
 import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast"
@@ -34,8 +36,8 @@ function newPost() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
           <CardHeader>
-            <CardTitle>Create Posts</CardTitle>
-            <CardDescription> Create a new post to share your ideas, stories, or questions with our community.</CardDescription>
+            <CardTitle>{Dashboard.Create.Title}</CardTitle>
+            <CardDescription>{Dashboard.Create.Subtitle}</CardDescription>
           </CardHeader>
           <CardContent className="capitalize flex flex-col gap-3">
             <Label className="capitalize" htmlFor="name">Name</Label>

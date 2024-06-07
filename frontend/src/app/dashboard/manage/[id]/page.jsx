@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
+import Dashboard from "@/config/dashboard.json"
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,8 +52,8 @@ export default function Post({ params }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Card>
                         <CardHeader>
-                            <CardTitle>Update Post</CardTitle>
-                            <CardDescription>Update your post to share new ideas, stories, or questions with our community.</CardDescription>
+                            <CardTitle>{Dashboard.Manage.Title}</CardTitle>
+                            <CardDescription>{Dashboard.Manage.Subtitle}</CardDescription>
                         </CardHeader>
                         <CardContent className="capitalize flex flex-col gap-3">
                             <Label className="capitalize" htmlFor="name">Pet's name</Label>

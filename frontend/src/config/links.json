@@ -1,0 +1,38 @@
+{
+    "Home": {
+        "Name": "Home",
+        "Url": "/"
+    },
+    "About": {
+        "Name": "About",
+        "Url": "/#about"
+    },
+    "Contact": {
+        "Name": "Contact",
+        "Url": "/#contact"
+    },
+    "Explore": {
+        "Name": "Explore",
+        "Url": "/explore"
+    },
+    "Dashboard": {
+        "Name": "Dashboard",
+        "Url": "/dashboard"
+    },
+    "Create": {
+        "Name": "Create",
+        "Url": "/dashboard/create"
+    },
+    "Manage": {
+        "Name": "Manage",
+        "Url": "/dashboard/manage"
+    },
+    "Login": {
+        "Name": "Login",
+        "Url": "/login"
+    },
+    "Register": {
+        "Name": "Register",
+        "Url": "/register"
+    }
+}

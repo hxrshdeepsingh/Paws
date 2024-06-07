@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react';
-import useLinks from "../hooks/useLinks";
-import NavLink from './ui/navLink';
-import useAuth from '../hooks/useAuth';
 import { useRouter } from 'next/navigation';
+
+import Links from "@/config/links.json"
+import useAuth from '../hooks/useAuth';
+import NavLink from './ui/navLink';
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -14,9 +15,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 
 export default function Header() {
     const isAuthenticated = useAuth(true);
-    const links = useLinks();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {push} = useRouter();
+    const { push } = useRouter();
 
     const handleToggle = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -28,50 +28,28 @@ export default function Header() {
                     <NavLink href="#" className="flex items-center gap-2 text-lg font-semibold md:text-base">
                         <Package2 className="h-6 w-6" />
                     </NavLink>
-                    <NavLink href={links.HOME} className="text-muted-foreground transition-colors hover:text-foreground">
-                        Home
-                    </NavLink>
-                    <NavLink href={links.ABOUT} className="text-muted-foreground transition-colors hover:text-foreground">
-                        About
-                    </NavLink>
-                    <NavLink href={links.CONTACT} className="text-muted-foreground transition-colors hover:text-foreground">
-                        Contact
-                    </NavLink>
-                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
-                        Dashboard
-                    </NavLink>
+                    <NavLink href={Links.Home.Url} className="text-muted-foreground transition-colors hover:text-foreground">{Links.Home.Name}</NavLink>
+                    <NavLink href={Links.Explore.Url} className="text-muted-foreground transition-colors hover:text-foreground">{Links.Explore.Name}</NavLink>
+                    <NavLink href={Links.About.Url} className="text-muted-foreground transition-colors hover:text-foreground">{Links.About.Name}</NavLink>
+                    <NavLink href={Links.Contact.Url} className="text-muted-foreground transition-colors hover:text-foreground">{Links.Contact.Name}</NavLink>
+                    <NavLink href={Links.Dashboard.Url} className="text-muted-foreground transition-colors hover:text-foreground">{Links.Dashboard.Name}</NavLink>
                 </nav>
                 <Sheet>
                     <SheetTrigger asChild>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="shrink-0 md:hidden"
-                        >
+                        <Button variant="outline" size="icon" className="shrink-0 md:hidden">
                             <Menu className="h-5 w-5" />
-                            <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="left">
                         <nav className="grid gap-6 text-lg font-medium">
-                            <NavLink href="#" className="flex items-center gap-2 text-lg font-semibold">
+                            <NavLink href={Links.Home.Url} className="flex items-center gap-2 text-lg font-semibold">
                                 <Package2 className="h-6 w-6" />
                             </NavLink>
-                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
-                                Dashboard
-                            </NavLink>
-                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
-                                Orders
-                            </NavLink>
-                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
-                                Products
-                            </NavLink>
-                            <NavLink href="#" className="text-muted-foreground hover:text-foreground">
-                                Customers
-                            </NavLink>
-                            <NavLink href="#" className="hover:text-foreground">
-                                Settings
-                            </NavLink>
+                            <NavLink href={Links.Home.Url} className="text-muted-foreground hover:text-foreground">{Links.Home.Name}</NavLink>
+                            <NavLink href={Links.About.Url} className="text-muted-foreground hover:text-foreground">{Links.About.Name}</NavLink>
+                            <NavLink href={Links.Contact.Url} className="text-muted-foreground hover:text-foreground">{Links.Contact.Name}</NavLink>
+                            <NavLink href={Links.Explore.Url} className="text-muted-foreground hover:text-foreground">{Links.Explore.Name}</NavLink>
+                            <NavLink href={Links.Dashboard.Url} className="hover:text-foreground">{Links.Dashboard.Name}</NavLink>
                         </nav>
                     </SheetContent>
                 </Sheet>
@@ -79,18 +57,13 @@ export default function Header() {
                     <form className="ml-auto flex-1 sm:flex-initial">
                         <div className="relative">
                             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                type="search"
-                                placeholder="Search products..."
-                                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-                            />
+                            <Input type="search" placeholder="Search products..." className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]" />
                         </div>
                     </form>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="secondary" size="icon" className="rounded-full">
                                 <CircleUser className="h-5 w-5" />
-                                <span className="sr-only">Toggle user menu</span>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
@@ -99,28 +72,26 @@ export default function Header() {
                                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
-                                        <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
-                                            Dashboard
+                                        <NavLink href={Links.Dashboard.Url} className="text-muted-foreground transition-colors hover:text-foreground">
+                                            {Links.Dashboard.Name}
                                         </NavLink>
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
-                                        <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
+                                        <NavLink href={Links.Dashboard.Url} className="text-muted-foreground transition-colors hover:text-foreground">
                                             Logout
                                         </NavLink>
                                     </DropdownMenuItem>
                                 </>) : (
                                 <>
-                                <DropdownMenuItem onClick={() => { push("/login") }}>Login</DropdownMenuItem>
-                                <DropdownMenuSeparator/>
-                                <DropdownMenuItem onClick={() => { push("/register") }}>Register</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { push(Links.Login.Url) }}>{Links.Login.Name}</DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem onClick={() => { push(Links.Register.Url) }}>{Links.Register.Name}</DropdownMenuItem>
                                 </>
                             )
                             }
-
                         </DropdownMenuContent>
                     </DropdownMenu>
-
                 </div>
             </header>
         </>

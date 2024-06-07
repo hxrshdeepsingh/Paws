@@ -1,7 +1,9 @@
 'use client';
 
 import Link from "next/link";
-import useLinks from "@/hooks/useLinks";
+import Links from "@/config/links.json"
+import Dashboard from "@/config/dashboard.json";
+
 import { getRequest, deleteRequest } from "../../../lib/api";
 import { useEffect, useState } from 'react';
 import { useToast } from "@/components/ui/use-toast"
@@ -14,7 +16,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "
 
 export default function editPost() {
     const [posts, setPosts] = useState([]);
-    const links = useLinks();
     const { toast } = useToast()
 
     useEffect(() => {
@@ -52,10 +53,8 @@ export default function editPost() {
         <>
             <Card>
                 <CardHeader>
-                    <CardTitle>Manage Posts</CardTitle>
-                    <CardDescription>
-                        Manage your products and view their sales performance.
-                    </CardDescription>
+                    <CardTitle>{Dashboard.Manage.Title}</CardTitle>
+                    <CardDescription>{Dashboard.Profile.Subtitle}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Table>
@@ -97,12 +96,10 @@ export default function editPost() {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align="end">
                                                     <DropdownMenuItem>
-                                                        <Link href={`${links.EXPLORE}/${post.postId}`}>
-                                                            Check
-                                                        </Link>
+                                                        <Link href={`${Links.Explore.Url}/${post.postId}`}>Check</Link>
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem>
-                                                        <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
+                                                        <Link href={`${Links.Manage.Url}/${post.postId}`}>Update</Link>
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => deletePost(post.postId)}>
                                                         delete

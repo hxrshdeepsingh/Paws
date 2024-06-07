@@ -3,6 +3,8 @@
 import { useForm } from 'react-hook-form';
 import { putRequest } from "../../lib/api";
 
+import Dashboard from "@/config/dashboard.json";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,8 +47,8 @@ function Account() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Update Account</CardTitle>
-                        <CardDescription>Update your account by filling in the details below</CardDescription>
+                        <CardTitle>{Dashboard.Profile.Title}</CardTitle>
+                        <CardDescription>{Dashboard.Profile.Subtitle}</CardDescription>
                     </CardHeader>
                     <CardContent className="capitalize flex flex-col gap-3">
                         <Label htmlFor="username">Username</Label>

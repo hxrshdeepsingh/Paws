@@ -1,0 +1,16 @@
+{
+    "Title": "Settings",
+    "Subtitle": "Manage your account settings and set e-mail preferences.",
+    "Profile": {
+        "Title": "Update Account",
+        "Subtitle": "Update your account by filling in the details below"
+    },
+    "Create": {
+        "Title": "Create Posts",
+        "Subtitle": "Create a new post to share your ideas, stories, or questions with our community."
+    },
+    "Manage": {
+        "Title": "Manage Posts",
+        "Subtitle": "Manage your products and view their sales performance."
+    }
+}
