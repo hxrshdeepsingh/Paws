@@ -4,6 +4,7 @@ import { useState } from 'react';
 import useLinks from "../hooks/useLinks";
 import NavLink from './ui/navLink';
 import useAuth from '../hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -15,6 +16,7 @@ export default function Header() {
     const isAuthenticated = useAuth(true);
     const links = useLinks();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {push} = useRouter();
 
     const handleToggle = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -87,36 +89,40 @@ export default function Header() {
                             />
                         </div>
                     </form>
-                    {(isAuthenticated) ? (
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button variant="secondary" size="icon" className="rounded-full">
-                                    <CircleUser className="h-5 w-5" />
-                                    <span className="sr-only">Toggle user menu</span>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>
-                                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
-                                        Settings
-                                    </NavLink>
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>
-                                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
-                                        Logout
-                                    </NavLink>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    ) : (
-                        <>
-                            <Button onClick={() => { console.log(23) }}>login</Button>
-                        </>
-                    )
-                    }
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="secondary" size="icon" className="rounded-full">
+                                <CircleUser className="h-5 w-5" />
+                                <span className="sr-only">Toggle user menu</span>
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            {(isAuthenticated) ? (
+                                <>
+                                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>
+                                        <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
+                                            Dashboard
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>
+                                        <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
+                                            Logout
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                </>) : (
+                                <>
+                                <DropdownMenuItem onClick={() => { push("/login") }}>Login</DropdownMenuItem>
+                                <DropdownMenuSeparator/>
+                                <DropdownMenuItem onClick={() => { push("/register") }}>Register</DropdownMenuItem>
+                                </>
+                            )
+                            }
+
+                        </DropdownMenuContent>
+                    </DropdownMenu>
 
                 </div>
             </header>

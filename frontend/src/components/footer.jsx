@@ -7,7 +7,7 @@ import data from "@/config/footer.json"
 export default function Footer() {
     return (
         <>
-            <footer className="container border-t-2 md:w-[90%]">
+            <footer className="container bg-muted rounded-t-3xl md:w-[90%]">
                 <div className="py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                     <div className="w-full text-center md:text-start">
                         <h2 className="text-xl font-semibold mb-10 capitalize">{data.section1.title}</h2>
@@ -22,14 +22,10 @@ export default function Footer() {
                             <Link className="hover:underline" href={"/contact"}>Contact</Link>
                         </ul>
                     </div>
-                    <div className="text-center w-full">
+                    <div className="text-center w-full mb-20">
                         <ul>
                             <h3 className="text-xl mb-10 font-semibold">{data.section3.title}</h3>
                             <p className="text-sm">{data.section3.description}</p>
-                            <div className="flex flex-col w-full items-center space-y-3 mt-5">
-                                <Input className="w-4/5" type="email" placeholder="Email" />
-                                <Button className="w-4/5" variant="default" type="submit">Subscribe</Button>
-                            </div>
                         </ul>
                     </div>
                 </div>
