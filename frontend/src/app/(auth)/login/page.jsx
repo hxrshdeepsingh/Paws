@@ -7,6 +7,8 @@ import { useToast } from "@/components/ui/use-toast"
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Cookies from 'js-cookie';
+import { refresh } from "@/lib/refresh";
+
 import { useForm } from 'react-hook-form';
 import { postRequest } from "../../../lib/api"
 import { useRouter } from 'next/navigation';
@@ -34,7 +36,7 @@ export default function login() {
             localStorage.setItem("userApi", JSON.stringify(response.data.user));
             launchToast("", "Account created succesfully!", "Wait for redirection");
             setTimeout(() => {
-                push('/explore');
+                refresh('/explore');
             }, 1000)
 
         } catch (error) {

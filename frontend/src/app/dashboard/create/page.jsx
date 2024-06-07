@@ -37,7 +37,7 @@ function newPost() {
             <CardTitle>Create Posts</CardTitle>
             <CardDescription> Create a new post to share your ideas, stories, or questions with our community.</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="capitalize flex flex-col gap-3">
             <Label className="capitalize" htmlFor="name">Name</Label>
             <Input {...register("name")} type="text" id="name" placeholder="Enter your pet name here..." />
 

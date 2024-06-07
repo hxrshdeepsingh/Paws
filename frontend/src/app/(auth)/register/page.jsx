@@ -1,6 +1,7 @@
 "use client"
 
 import Cookies from 'js-cookie';
+import { refresh } from '@/lib/refresh';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,7 +35,7 @@ export default function register() {
                 localStorage.setItem("userInfo", JSON.stringify(response.data.user));
                 localStorage.setItem("userApi", JSON.stringify(response.data.user));
                 setTimeout(() => {
-                    push('/posts');
+                    refresh('/posts');
                 }, 1000)
             }
 

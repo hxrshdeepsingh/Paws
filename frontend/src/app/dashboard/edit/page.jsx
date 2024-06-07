@@ -74,51 +74,57 @@ export default function editPost() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-
-                            {posts.map((post, index) => (
-                                <TableRow key={index}>
-                                    <TableCell className="font-medium">
-                                        {post.name}
-                                    </TableCell>
-                                    <TableCell>
-                                        <Badge variant="outline">{post.age}</Badge>
-                                    </TableCell>
-                                    <TableCell>{post.gender}</TableCell>
-                                    <TableCell className="hidden md:table-cell">
-                                        {post.date}
-                                    </TableCell>
-                                    <TableCell>
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger asChild>
-                                                <Button aria-haspopup="true" size="icon" variant="ghost">
-                                                    <MoreHorizontal className="h-4 w-4" />
-                                                    <span className="sr-only">Toggle menu</span>
-                                                </Button>
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuContent align="end">
-                                                <DropdownMenuItem>
-                                                    <Link href={`${links.EXPLORE}/${post.postId}`}>
-                                                        Check
-                                                    </Link>
-                                                </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
-                                                </DropdownMenuItem>
-                                                <DropdownMenuItem onClick={() => deletePost(post.postId)}>
-                                                    delete
-                                                </DropdownMenuItem>
-                                            </DropdownMenuContent>
-                                        </DropdownMenu>
+                            {posts.length > 0 ? (
+                                posts.map((post, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell className="font-medium">
+                                            {post.name}
+                                        </TableCell>
+                                        <TableCell>
+                                            <Badge variant="outline">{post.age}</Badge>
+                                        </TableCell>
+                                        <TableCell>{post.gender}</TableCell>
+                                        <TableCell className="hidden md:table-cell">
+                                            {post.date}
+                                        </TableCell>
+                                        <TableCell>
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger asChild>
+                                                    <Button aria-haspopup="true" size="icon" variant="ghost">
+                                                        <MoreHorizontal className="h-4 w-4" />
+                                                        <span className="sr-only">Toggle menu</span>
+                                                    </Button>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent align="end">
+                                                    <DropdownMenuItem>
+                                                        <Link href={`${links.EXPLORE}/${post.postId}`}>
+                                                            Check
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem>
+                                                        <Link href={`${links.POST_MANAGE}/${post.postId}`}>Update</Link>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => deletePost(post.postId)}>
+                                                        delete
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
+                                        </TableCell>
+                                    </TableRow>
+                                ))) : (
+                                <TableRow>
+                                    <TableCell colSpan={5} className="text-center">
+                                        No posts found.
                                     </TableCell>
                                 </TableRow>
-                            ))}
+                            )}
 
                         </TableBody>
                     </Table>
                 </CardContent>
                 <CardFooter>
                     <div className="text-xs text-muted-foreground">
-                        all posts
+                        Showing 1-10 of 32 products
                     </div>
                 </CardFooter>
             </Card>

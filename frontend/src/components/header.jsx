@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import useLinks from "../hooks/useLinks";
 import NavLink from './ui/navLink';
+import useAuth from '../hooks/useAuth';
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -11,6 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
+    const isAuthenticated = useAuth(true);
     const links = useLinks();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -85,22 +87,30 @@ export default function Header() {
                             />
                         </div>
                     </form>
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="secondary" size="icon" className="rounded-full">
-                                <CircleUser className="h-5 w-5" />
-                                <span className="sr-only">Toggle user menu</span>
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>Settings</DropdownMenuItem>
-                            <DropdownMenuItem>Support</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>Logout</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
+                    {(isAuthenticated) ? (
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="secondary" size="icon" className="rounded-full">
+                                    <CircleUser className="h-5 w-5" />
+                                    <span className="sr-only">Toggle user menu</span>
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>Settings</DropdownMenuItem>
+                                <DropdownMenuItem>Support</DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>Logout</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    ) : (
+                        <>
+                            <Button onClick={()=>{console.log(23)}}>login</Button>
+                        </>
+                    )
+                    }
+
                 </div>
             </header>
         </>

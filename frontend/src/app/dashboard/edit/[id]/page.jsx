@@ -54,7 +54,7 @@ export default function Post({ params }) {
                             <CardTitle>Update Post</CardTitle>
                             <CardDescription>Update your post to share new ideas, stories, or questions with our community.</CardDescription>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="capitalize flex flex-col gap-3">
                             <Label className="capitalize" htmlFor="name">Pet's name</Label>
                             <Input {...register("name")} type="text" id="name" placeholder="Enter your pet name here..." />
 

@@ -48,20 +48,20 @@ function Account() {
                         <CardTitle>Update Account</CardTitle>
                         <CardDescription>Update your account by filling in the details below</CardDescription>
                     </CardHeader>
-                    <CardContent className="capitalize">
-                        <Label htmlFor="username">Enter username</Label>
-                        <Input {...register("username")} type="text" id="username" placeholder="Enter your username..." defaultValue={userInfo?.username || ""} />
+                    <CardContent className="capitalize flex flex-col gap-3">
+                        <Label htmlFor="username">Username</Label>
+                        <Input {...register("username")} type="text" id="username" placeholder="Enter your sername..." defaultValue={userInfo?.username || ""} />
 
-                        <Label htmlFor="email">Your email address</Label>
+                        <Label htmlFor="email">Email ddress</Label>
                         <Input {...register("email")} type="email" id="email" placeholder="Enter your email..." defaultValue={userInfo?.email || ""} />
 
-                        <Label htmlFor="number">Enter phone number</Label>
+                        <Label htmlFor="number">Phone number</Label>
                         <Input {...register("number")} type="tel" id="number" placeholder="Enter your number..." defaultValue={userInfo?.number || ""} />
 
-                        <Label htmlFor="address">Enter address</Label>
+                        <Label htmlFor="address">address</Label>
                         <Input {...register("address")} type="text" id="address" placeholder="Enter your address..." defaultValue={userInfo?.address || ""} />
 
-                        <Label htmlFor="state">Enter state</Label>
+                        <Label htmlFor="state">state</Label>
                         <Input {...register("state")} type="text" id="state" placeholder="Enter state..." defaultValue={userInfo?.state || ""} />
                     </CardContent>
                     <CardFooter>
