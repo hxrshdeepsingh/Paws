@@ -98,15 +98,22 @@ export default function Header() {
                             <DropdownMenuContent align="end">
                                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem>Settings</DropdownMenuItem>
-                                <DropdownMenuItem>Support</DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
+                                        Settings
+                                    </NavLink>
+                                </DropdownMenuItem>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem>Logout</DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
+                                        Logout
+                                    </NavLink>
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     ) : (
                         <>
-                            <Button onClick={()=>{console.log(23)}}>login</Button>
+                            <Button onClick={() => { console.log(23) }}>login</Button>
                         </>
                     )
                     }
