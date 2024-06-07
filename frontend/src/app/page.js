@@ -10,7 +10,6 @@ export default function Home() {
   return (
     <>
       <div className="container md:w-[90%]">
-
         <div className=" h-[50vh] flex flex-col justify-center">
           <div className="w-full text-center">
             <h2 className="text-4xl font-semibold mb-3">{data.hero.title}</h2>
@@ -78,13 +77,25 @@ export default function Home() {
           </div>
         </div>
 
-        <div id='about' className='min-h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-5 my-5'>
+        <div
+          id="about"
+          className="min-h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-5 my-5"
+        >
           <div>
-            <img className="w-full h-auto rounded-3xl" src={'/assets/Dog.avif'} alt="Dog" />
+            <img
+              className="w-full h-auto rounded-3xl"
+              src={'/assets/Dog.avif'}
+              alt="Dog"
+            />
           </div>
           <div>
-            <h2 className='text-4xl font-semibold mb-3'>about pawsligth</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni maiores velit perferendis porro ratione, ex alias nesciunt ad quia exercitationem quidem eveniet autem inventore, nihil omnis. Distinctio incidunt eum aliquam amet! Ex.</p>
+            <h2 className="text-4xl font-semibold mb-3">about pawsligth</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
+              maiores velit perferendis porro ratione, ex alias nesciunt ad quia
+              exercitationem quidem eveniet autem inventore, nihil omnis.
+              Distinctio incidunt eum aliquam amet! Ex.
+            </p>
           </div>
         </div>
 
@@ -124,20 +135,22 @@ export default function Home() {
           </div>
         </div>
 
-        <div id='contact' className='grid w-[70%] mx-auto place-items-center h-[30vh] bg-primary rounded-3xl my-10 px-4'>
+        <div
+          id="contact"
+          className="grid w-[70%] mx-auto place-items-center h-[30vh] bg-primary rounded-3xl my-10 px-4"
+        >
           <div>
-            <h3 className='text-2xl md:text-4xl text-center font-semibold mb-3'>Contact Us</h3>
-            <div className='font-semibold grid grid-cols-1 md:grid-cols-3 gap-4 text-center'>
+            <h3 className="text-2xl md:text-4xl text-center font-semibold mb-3">
+              Contact Us
+            </h3>
+            <div className="font-semibold grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
               <p>Email: ishu.cxx@gmail.com</p>
               <p>Phone: +01 98390-89232</p>
               <p>Address: Mansarovar,Rajasthan</p>
             </div>
           </div>
         </div>
-
-
       </div>
-
     </>
   );
 }
