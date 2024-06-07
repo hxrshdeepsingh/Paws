@@ -31,13 +31,10 @@ export default function Header() {
                     <NavLink href={links.HOME} className="text-muted-foreground transition-colors hover:text-foreground">
                         Home
                     </NavLink>
-                    <NavLink href={links.EXPLORE} className="text-muted-foreground transition-colors hover:text-foreground">
-                        Explore
-                    </NavLink>
-                    <NavLink href="#" className="text-muted-foreground transition-colors hover:text-foreground">
+                    <NavLink href={links.ABOUT} className="text-muted-foreground transition-colors hover:text-foreground">
                         About
                     </NavLink>
-                    <NavLink href="#" className="text-muted-foreground transition-colors hover:text-foreground">
+                    <NavLink href={links.CONTACT} className="text-muted-foreground transition-colors hover:text-foreground">
                         Contact
                     </NavLink>
                     <NavLink href={links.DASHBOARD} className="text-muted-foreground transition-colors hover:text-foreground">
