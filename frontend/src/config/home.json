@@ -1,0 +1,16 @@
+{
+    "hero": {
+        "title": "🐾 Dont buy - adopt one",
+        "description": "I develop accessible, responsive, interactive, and animated websites with a strong focus on performance."
+    },
+    "posts": {
+        "first": {
+            "title": "Landing page title 1",
+            "description": "And a subheading describing your site, too"
+        },
+        "second": {
+            "title": "Landing page title 2",
+            "description": "And a subheading describing your site, too"
+        }
+    }
+}

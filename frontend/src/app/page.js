@@ -137,7 +137,7 @@ export default function Home() {
 
         <div
           id="contact"
-          className="grid w-[70%] mx-auto place-items-center h-[30vh] bg-primary rounded-3xl my-10 px-4"
+          className="grid mx-auto place-items-center h-[30vh] bg-primary rounded-3xl my-10 px-4"
         >
           <div>
             <h3 className="text-2xl md:text-4xl text-center font-semibold mb-3">

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import useLinks from "@/hooks/useLinks";
+import Links from "@/config/links.json"
+import Explore from "@/config/explore.json";
 
 import { useEffect, useState } from "react";
 import { getRequest } from "../../lib/api";
@@ -12,7 +13,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 
 
 export default function Posts() {
-    const links = useLinks();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -30,37 +30,41 @@ export default function Posts() {
 
     return (
         <>
-            <h2>Explore Pets</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam labore doloribus, inventore incidunt ex rerum eligendi. Pariatur voluptas obcaecati veniam reprehenderit cumque, iusto quasi. Magnam atque omnis dolores inventore, quod tempora placeat.</p>
+            <div className="flex min-h-screen w-full flex-col">
+                <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 md:gap-8 py-10">
+                    <div className="mx-auto grid w-full max-w-6xl gap-2">
+                        <h1 className="text-3xl font-semibold">{Explore.Title}</h1>
+                        <h3 className="text-muted-foreground">{Explore.Subtitle}</h3>
+                        <Separator className="mt-4" />
+                    </div>
+                    {posts.map((post, index) => (
+                        <Card key={index} className="my-4">
+                            <CardHeader>
+                                <CardTitle>{post.name}</CardTitle>
+                                <CardDescription className="text-gray-700">{post.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex flex-col md:flex-row justify-between">
+                                <div className="w-full">
+                                    <p>Age: {post.age}</p>
+                                    <p>Date: {post.date}</p>
+                                    <p>Species: {post.species}</p>
+                                </div>
+                                <div className="w-full">
+                                    <p>Weight: {post.weight}</p>
+                                    <p>Gender: {post.gender}</p>
+                                </div>
+                            </CardContent>
+                            <Separator />
 
-            <Separator className="my-4" />
-
-            {posts.map((post, index) => (
-                <Card key={index} className="my-4">
-                    <CardHeader>
-                        <CardTitle>{post.name}</CardTitle>
-                        <CardDescription className="text-gray-700">{post.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex flex-col md:flex-row justify-between">
-                        <div className="w-full">
-                            <p>Age: {post.age}</p>
-                            <p>Date: {post.date}</p>
-                            <p>Species: {post.species}</p>
-                        </div>
-                        <div className="w-full">
-                            <p>Weight: {post.weight}</p>
-                            <p>Gender: {post.gender}</p>
-                        </div>
-                    </CardContent>
-                    <Separator />
-
-                    <CardFooter className="py-2">
-                        <Button variant="secondary">
-                            <Link href={`${links.EXPLORE}/${post.postId}`}>More Info</Link>
-                        </Button>
-                    </CardFooter>
-                </Card>
-            ))}
+                            <CardFooter className="py-2">
+                                <Button variant="secondary">
+                                    <Link href={`${Links.Explore.Url}/${post.postId}`}>More Info</Link>
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </main>
+            </div>
         </>
     );
 }

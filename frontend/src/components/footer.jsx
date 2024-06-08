@@ -5,15 +5,15 @@ import Links from "@/config/links.json"
 export default function Footer() {
     return (
         <>
-            <footer className="container bg-muted rounded-t-3xl md:w-[90%]">
-                <div className="py-10 flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
+            <footer className="bg-muted">
+                <div className="pt-10 container w-[90%] flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                     <div className="w-full text-center md:text-start">
-                        <h2 className="text-xl font-semibold mb-10 capitalize">{Data.section1.title}</h2>
+                        <h2 className="text-2xl font-semibold mb-10 capitalize">{Data.section1.title}</h2>
                         <p>{Data.section1.phone}</p>
                         <p>{Data.section1.description}</p>
                     </div>
                     <div className="w-full">
-                        <h2 className="text-xl font-semibold mb-10 text-center">Links</h2>
+                        <h2 className="text-2xl font-semibold mb-10 text-center">Links</h2>
                         <ul className="capitalize text-center flex flex-col">
                             <Link className="hover:underline" href={Links.About.Url}>{Links.About.Name}</Link>
                             <Link className="hover:underline" href={Links.Contact.Url}>{Links.Contact.Name}</Link>
@@ -22,7 +22,7 @@ export default function Footer() {
                     </div>
                     <div className="text-center w-full mb-20">
                         <ul>
-                            <h3 className="text-xl mb-10 font-semibold">{Data.section3.title}</h3>
+                            <h3 className="text-2xl mb-10 font-semibold">{Data.section3.title}</h3>
                             <p className="text-sm">{Data.section3.description}</p>
                         </ul>
                     </div>
