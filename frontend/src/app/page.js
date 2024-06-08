@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { DollarSign, Users, CreditCard, Activity } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-import data from '../config/home/hero.json';
+import data from '../config/home.json';
 
 export default function Home() {
   return (
