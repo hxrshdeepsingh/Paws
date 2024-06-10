@@ -7,7 +7,7 @@ function NavLink({ href, children }) {
     const isActive = pathname === href;
 
     return (
-        <Link href={href} className={classNames('text-sm text-muted-foreground', { 'text-white': isActive })}>
+        <Link href={href} className={classNames('text-muted-foreground', { 'text-primary': isActive })}>
             {children}
         </Link>
     );

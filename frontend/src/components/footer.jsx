@@ -5,8 +5,8 @@ import Links from "@/config/links.json"
 export default function Footer() {
     return (
         <>
-            <footer className="bg-muted">
-                <div className="pt-10 container w-[90%] flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
+            <footer>
+                <div className="pt-10 container flex gap-y-5 justify-between flex-col sm:flex-col md:flex-row">
                     <div className="w-full text-center md:text-start">
                         <h2 className="text-2xl font-semibold mb-10 capitalize">{Data.section1.title}</h2>
                         <p>{Data.section1.phone}</p>
