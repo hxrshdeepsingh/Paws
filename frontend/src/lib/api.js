@@ -4,13 +4,12 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 async function postRequest(url, data) {
-  const cookie = Cookies.get('pjwt');
   try {
     const res = await axios.post(url, data, {
-      headers: {
-        Authorization: `${cookie}`,
-      },
       withCredentials: true,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     });
     return res;
   } catch (error) {

@@ -7,7 +7,7 @@ dotenv.config()
 
 // @protected
 const signup = async (req, res) => {
-	const { username, password, email, number, address, state } = req.body
+	const { username, password, email, number, address, state, file } = req.body
 	try {
 		const existingUser = await User.findOne({ email: email })
 		if (existingUser) {
