@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require("path")
 const dotenv = require('dotenv')
 dotenv.config()
 const cors = require('cors')
@@ -29,6 +30,8 @@ mongoose
 app.use(express.json())
 app.use('/api/account', userRoute)
 app.use('/api/posts', postRoute)
+
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 app.listen(process.env.PORT, () => {
 	console.log('Server is running!')

@@ -6,17 +6,20 @@ import { useRouter } from 'next/navigation';
 import Links from "@/config/links.json"
 import useAuth from '../hooks/useAuth';
 import NavLink from './ui/navLink';
+import useInfo from '@/hooks/useInfo';
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { CircleUser, Menu, Package2, Search, PawPrint, Bone } from "lucide-react"
+import { Menu, Package2, PawPrint, Bone } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Header() {
     const isAuthenticated = useAuth(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { push } = useRouter();
+    const info = useInfo();
 
     const handleToggle = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -58,9 +61,10 @@ export default function Header() {
                         </div>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button variant="secondary" size="icon" className="rounded-full">
-                                    <CircleUser className="h-5 w-5" />
-                                </Button>
+                                <Avatar>
+                                    <AvatarImage src={process.env.NEXT_PUBLIC_API_BASE + "/upload/" + info.avatar} />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                                 {(isAuthenticated) ? (

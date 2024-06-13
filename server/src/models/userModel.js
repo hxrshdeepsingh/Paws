@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
 	address: { type: String, required: true },
 	state: { type: String, required: true },
 	public_id: { type: String, unique: true, required: true },
+	avatar: { type: String }, 
 })
 
 const User = mongoose.model('User', userSchema)
