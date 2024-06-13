@@ -19,6 +19,7 @@ const postSchema = new mongoose.Schema({
 	date: { type: Date, default: Date.now },
 	userId: { type: String, required: true },
 	postId: { type: String, required: true },
+	image: {type: String, required: true}
 })
 
 const Post = mongoose.model('posts', postSchema)
