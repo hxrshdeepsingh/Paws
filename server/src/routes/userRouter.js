@@ -1,5 +1,10 @@
 const router = require('express').Router()
-const { signup, signin, profile, update } = require('../controllers/userControllers')
+const {
+	signup,
+	signin,
+	profile,
+	update,
+} = require('../controllers/userControllers')
 const { verifyToken } = require('../middlewares/userAuth')
 const upload = require('../config/multerConfig')
 

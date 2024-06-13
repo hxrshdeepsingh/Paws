@@ -62,8 +62,13 @@ export default function Header() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Avatar>
-                                    <AvatarImage src={process.env.NEXT_PUBLIC_API_BASE + "/upload/" + info.avatar} />
-                                    <AvatarFallback>CN</AvatarFallback>
+                                    {info ? (
+                                        <>
+                                            <AvatarImage src={process.env.NEXT_PUBLIC_API_BASE + "/upload/" + info.avatar} />
+                                        </>
+                                    ) : (
+                                        <><AvatarFallback>CN</AvatarFallback></>
+                                    )}
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
