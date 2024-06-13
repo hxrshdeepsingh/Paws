@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0,3%,7%;
+    --background: 0, 3%, 7%;
     --foreground: 255 5% 90%;
     --card: 255 50% 0%;
     --card-foreground: 255 5% 90%;
@@ -96,14 +96,34 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-a{
+a {
   height: 100%;
   width: 100%;
 }
 
-.hero-image{
+.hero-image {
   background-image: url('https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   background-color: burlywood;
+}
+
+body {
+  background: linear-gradient(334deg, #858484, #000000, #645e61);
+  background-size: 180% 180%;
+  animation: gradient-animation 3s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }

@@ -9,7 +9,7 @@ import data from '../config/home.json';
 export default function Home() {
   return (
     <>
-      <div className="container">
+      <div className="container mt-5">
         <div className="bg-muted hero-image rounded-3xl p-5">
           <div className=" h-[60vh] flex flex-col justify-center">
             <div className="w-full text-center">
@@ -81,7 +81,7 @@ export default function Home() {
 
         <div
           id="about"
-          className="min-h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-5 my-5"
+          className="min-h-[50vh] grid grid-cols-1 md:grid-cols-2 gap-5 my-10"
         >
           <div>
             <img
@@ -91,7 +91,9 @@ export default function Home() {
             />
           </div>
           <div>
-            <h2 className="text-4xl font-semibold mb-3">about pawsligth</h2>
+            <h2 className="text-4xl mt-10 font-semibold mb-3">
+              about pawsligth
+            </h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
               maiores velit perferendis porro ratione, ex alias nesciunt ad quia

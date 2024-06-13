@@ -32,10 +32,10 @@ export default function Posts() {
         <>
             <div className="flex min-h-screen w-full flex-col">
                 <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 md:gap-8 py-10">
-                    <div className="mx-auto grid w-full max-w-6xl gap-2">
+                    <div className="grid w-full max-w-6xl gap-2">
                         <h1 className="text-3xl font-semibold">{Explore.Title}</h1>
                         <h3 className="text-muted-foreground">{Explore.Subtitle}</h3>
-                        <Separator className="mt-4" />
+                        <Separator className="mt-4 bg-primary" />
                     </div>
                     {posts.map((post, index) => (
                         <Card key={index} className="my-4">
@@ -57,7 +57,7 @@ export default function Posts() {
                             <Separator />
 
                             <CardFooter className="py-2">
-                                <Button variant="secondary">
+                                <Button>
                                     <Link href={`${Links.Explore.Url}/${post.postId}`}>More Info</Link>
                                 </Button>
                             </CardFooter>
